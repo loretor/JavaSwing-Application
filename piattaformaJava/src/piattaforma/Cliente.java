@@ -28,7 +28,6 @@ public class Cliente {
     // ----------- >>
     private String CodiceFiscale;
 
-    
     private String getNome() {
         return Nome;
     }
@@ -78,14 +77,12 @@ public class Cliente {
     protected boolean controlloDisponibilitaSpogliatoio() {
     // ----------- << method.body@AAAAAAF+h+SsyALL5Xc= >>
     // ----------- >>
-    	return true;
     }
     // ----------- << method.annotations@AAAAAAF+h+SsyALNTRo= >>
     // ----------- >>
     protected boolean controlloBan() {
     // ----------- << method.body@AAAAAAF+h+SsyALNTRo= >>
     // ----------- >>
-    	return true;
     }
 // ----------- << class.extras@AAAAAAF+h+SsyALA1XA= >>
 // ----------- >>

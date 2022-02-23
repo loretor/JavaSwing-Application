@@ -38,15 +38,15 @@ public class Struttura {
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALlXF8= >>
     // ----------- >>
-    private Set<Cliente>  = new HashSet<>();
+    private Set<Cliente> ListaClientiBan = new HashSet<>();
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALvLyc= >>
     // ----------- >>
-    private Set<Campo>  = new HashSet<>();
+    private Set<Campo> ListaCampi = new HashSet<>();
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyAL4npc= >>
     // ----------- >>
-    private Set<Spogliatoio>  = new HashSet<>();
+    private Set<Spogliatoio> ListaSpogliatoi = new HashSet<>();
 
     public String getNome() {
         return Nome;
@@ -68,16 +68,16 @@ public class Struttura {
         return ConteggioPrenotazioni;
     }
 
-    public Set<Cliente> get() {
-        return ;
+    public Set<Cliente> getListaClientiBan() {
+        return ListaClientiBan;
     }
 
-    public Set<Campo> get() {
-        return ;
+    public Set<Campo> getListaCampi() {
+        return ListaCampi;
     }
 
-    public Set<Spogliatoio> get() {
-        return ;
+    public Set<Spogliatoio> getListaSpogliatoi() {
+        return ListaSpogliatoi;
     }
 
     public void setNome(String Nome) {
@@ -100,62 +100,62 @@ public class Struttura {
         this.ConteggioPrenotazioni = ConteggioPrenotazioni;
     }
 
-    public void link(Cliente _) {
-        if (_ != null) {
-            get().add(_);
+    public void linkListaClientiBan(Cliente _ListaClientiBan) {
+        if (_ListaClientiBan != null) {
+            getListaClientiBan().add(_ListaClientiBan);
         }
     }
 
-    public void link(Campo _) {
-        if (_ != null) {
-            _.unlink();
-            _.set(this);
-            get().add(_);
+    public void linkListaCampi(Campo _ListaCampi) {
+        if (_ListaCampi != null) {
+            _ListaCampi.unlinkStrutturaProprietaria();
+            _ListaCampi.setStrutturaProprietaria(this);
+            getListaCampi().add(_ListaCampi);
         }
     }
 
-    public void link(Spogliatoio _) {
-        if (_ != null) {
-            _.unlink();
-            _.set(this);
-            get().add(_);
+    public void linkListaSpogliatoi(Spogliatoio _ListaSpogliatoi) {
+        if (_ListaSpogliatoi != null) {
+            _ListaSpogliatoi.unlinkStrutturaProprietaria();
+            _ListaSpogliatoi.setStrutturaProprietaria(this);
+            getListaSpogliatoi().add(_ListaSpogliatoi);
         }
     }
 
-    public void unlink(Cliente _) {
-        if (_ != null) {
-            get().remove(_);
+    public void unlinkListaClientiBan(Cliente _ListaClientiBan) {
+        if (_ListaClientiBan != null) {
+            getListaClientiBan().remove(_ListaClientiBan);
         }
     }
 
-    public void unlink(Iterator<Cliente> it) {
+    public void unlinkListaClientiBan(Iterator<Cliente> it) {
         it.remove();
     }
 
-    public void unlink(Campo _) {
-        if (_ != null) {
-            _.set(null);
-            get().remove(_);
+    public void unlinkListaCampi(Campo _ListaCampi) {
+        if (_ListaCampi != null) {
+            _ListaCampi.setStrutturaProprietaria(null);
+            getListaCampi().remove(_ListaCampi);
         }
     }
 
-    public void unlink(Campo _, Iterator<Campo> it) {
-        if (_ != null) {
-            _.set(null);
+    public void unlinkListaCampi(Campo _ListaCampi, Iterator<Campo> it) {
+        if (_ListaCampi != null) {
+            _ListaCampi.setStrutturaProprietaria(null);
             it.remove();
         }
     }
 
-    public void unlink(Spogliatoio _) {
-        if (_ != null) {
-            _.set(null);
-            get().remove(_);
+    public void unlinkListaSpogliatoi(Spogliatoio _ListaSpogliatoi) {
+        if (_ListaSpogliatoi != null) {
+            _ListaSpogliatoi.setStrutturaProprietaria(null);
+            getListaSpogliatoi().remove(_ListaSpogliatoi);
         }
     }
 
-    public void unlink(Spogliatoio _, Iterator<Spogliatoio> it) {
-        if (_ != null) {
-            _.set(null);
+    public void unlinkListaSpogliatoi(Spogliatoio _ListaSpogliatoi, Iterator<Spogliatoio> it) {
+        if (_ListaSpogliatoi != null) {
+            _ListaSpogliatoi.setStrutturaProprietaria(null);
             it.remove();
         }
     }

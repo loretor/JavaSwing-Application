@@ -18,25 +18,25 @@ import java.time.*;
 public class RegistroStrutture {
     // ----------- << attribute.annotations@AAAAAAF/Ih9yqcv7c7Q= >>
     // ----------- >>
-    private Set<Struttura>  = new HashSet<>();
+    private Set<Struttura> ListaStrutture = new HashSet<>();
 
-    public Set<Struttura> get() {
-        return ;
+    public Set<Struttura> getListaStrutture() {
+        return ListaStrutture;
     }
 
-    public void link(Struttura _) {
-        if (_ != null) {
-            get().add(_);
+    public void linkListaStrutture(Struttura _ListaStrutture) {
+        if (_ListaStrutture != null) {
+            getListaStrutture().add(_ListaStrutture);
         }
     }
 
-    public void unlink(Struttura _) {
-        if (_ != null) {
-            get().remove(_);
+    public void unlinkListaStrutture(Struttura _ListaStrutture) {
+        if (_ListaStrutture != null) {
+            getListaStrutture().remove(_ListaStrutture);
         }
     }
 
-    public void unlink(Iterator<Struttura> it) {
+    public void unlinkListaStrutture(Iterator<Struttura> it) {
         it.remove();
     }
 

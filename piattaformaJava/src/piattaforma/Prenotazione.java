@@ -54,11 +54,11 @@ public class Prenotazione {
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALS8Ac= >>
     // ----------- >>
-    private Campo ;
+    private Campo CampoAssociato;
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALVPUU= >>
     // ----------- >>
-    private Spogliatoio ;
+    private Spogliatoio SpogliatoioAssociato;
 
     public Date getDataOra() {
         return DataOra;
@@ -96,12 +96,12 @@ public class Prenotazione {
         return NomeStruttura;
     }
 
-    public Campo get() {
-        return ;
+    public Campo getCampoAssociato() {
+        return CampoAssociato;
     }
 
-    public Spogliatoio get() {
-        return ;
+    public Spogliatoio getSpogliatoioAssociato() {
+        return SpogliatoioAssociato;
     }
 
     public void setDataOra(Date DataOra) {
@@ -140,43 +140,43 @@ public class Prenotazione {
         this.NomeStruttura = NomeStruttura;
     }
 
-    public void set(Campo ) {
-        this. = ;
+    public void setCampoAssociato(Campo CampoAssociato) {
+        this.CampoAssociato = CampoAssociato;
     }
 
-    public void set(Spogliatoio ) {
-        this. = ;
+    public void setSpogliatoioAssociato(Spogliatoio SpogliatoioAssociato) {
+        this.SpogliatoioAssociato = SpogliatoioAssociato;
     }
 
-    public void link(Campo _) {
-        if (_ != null) {
-            _.get().add(this);
+    public void linkCampoAssociato(Campo _CampoAssociato) {
+        if (_CampoAssociato != null) {
+            _CampoAssociato.getListaPrenotazioni().add(this);
         }
 
-        unlink();
-        set(_);
+        unlinkCampoAssociato();
+        setCampoAssociato(_CampoAssociato);
     }
 
-    public void link(Spogliatoio _) {
-        if (_ != null) {
-            _.get().add(this);
+    public void linkSpogliatoioAssociato(Spogliatoio _SpogliatoioAssociato) {
+        if (_SpogliatoioAssociato != null) {
+            _SpogliatoioAssociato.getListaPrenotazioni().add(this);
         }
 
-        unlink();
-        set(_);
+        unlinkSpogliatoioAssociato();
+        setSpogliatoioAssociato(_SpogliatoioAssociato);
     }
 
-    public void unlink() {
-        if (get() != null) {
-            get().get().remove(this);
-            set(null);
+    public void unlinkCampoAssociato() {
+        if (getCampoAssociato() != null) {
+            getCampoAssociato().getListaPrenotazioni().remove(this);
+            setCampoAssociato(null);
         }
     }
 
-    public void unlink() {
-        if (get() != null) {
-            get().get().remove(this);
-            set(null);
+    public void unlinkSpogliatoioAssociato() {
+        if (getSpogliatoioAssociato() != null) {
+            getSpogliatoioAssociato().getListaPrenotazioni().remove(this);
+            setSpogliatoioAssociato(null);
         }
     }
 

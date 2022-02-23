@@ -34,11 +34,11 @@ public abstract class Campo {
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALRqvo= >>
     // ----------- >>
-    private Set<Prenotazione>  = new HashSet<>();
+    private Set<Prenotazione> ListaPrenotazioni = new HashSet<>();
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALw6xI= >>
     // ----------- >>
-    private Struttura ;
+    private Struttura StrutturaProprietaria;
 
     private String getIDcampo() {
         return IDcampo;
@@ -56,12 +56,12 @@ public abstract class Campo {
         return nroMaxPersone;
     }
 
-    public Set<Prenotazione> get() {
-        return ;
+    public Set<Prenotazione> getListaPrenotazioni() {
+        return ListaPrenotazioni;
     }
 
-    public Struttura get() {
-        return ;
+    public Struttura getStrutturaProprietaria() {
+        return StrutturaProprietaria;
     }
 
     private void setIDcampo(String IDcampo) {
@@ -76,45 +76,45 @@ public abstract class Campo {
         this.nroMaxPersone = nroMaxPersone;
     }
 
-    public void set(Struttura ) {
-        this. = ;
+    public void setStrutturaProprietaria(Struttura StrutturaProprietaria) {
+        this.StrutturaProprietaria = StrutturaProprietaria;
     }
 
-    public void link(Prenotazione _) {
-        if (_ != null) {
-            _.unlink();
-            _.set(this);
-            get().add(_);
+    public void linkListaPrenotazioni(Prenotazione _ListaPrenotazioni) {
+        if (_ListaPrenotazioni != null) {
+            _ListaPrenotazioni.unlinkCampoAssociato();
+            _ListaPrenotazioni.setCampoAssociato(this);
+            getListaPrenotazioni().add(_ListaPrenotazioni);
         }
     }
 
-    public void link(Struttura _) {
-        if (_ != null) {
-            _.get().add(this);
+    public void linkStrutturaProprietaria(Struttura _StrutturaProprietaria) {
+        if (_StrutturaProprietaria != null) {
+            _StrutturaProprietaria.getListaCampi().add(this);
         }
 
-        unlink();
-        set(_);
+        unlinkStrutturaProprietaria();
+        setStrutturaProprietaria(_StrutturaProprietaria);
     }
 
-    public void unlink(Prenotazione _) {
-        if (_ != null) {
-            _.set(null);
-            get().remove(_);
+    public void unlinkListaPrenotazioni(Prenotazione _ListaPrenotazioni) {
+        if (_ListaPrenotazioni != null) {
+            _ListaPrenotazioni.setCampoAssociato(null);
+            getListaPrenotazioni().remove(_ListaPrenotazioni);
         }
     }
 
-    public void unlink(Prenotazione _, Iterator<Prenotazione> it) {
-        if (_ != null) {
-            _.set(null);
+    public void unlinkListaPrenotazioni(Prenotazione _ListaPrenotazioni, Iterator<Prenotazione> it) {
+        if (_ListaPrenotazioni != null) {
+            _ListaPrenotazioni.setCampoAssociato(null);
             it.remove();
         }
     }
 
-    public void unlink() {
-        if (get() != null) {
-            get().get().remove(this);
-            set(null);
+    public void unlinkStrutturaProprietaria() {
+        if (getStrutturaProprietaria() != null) {
+            getStrutturaProprietaria().getListaCampi().remove(this);
+            setStrutturaProprietaria(null);
         }
     }
 
