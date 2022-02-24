@@ -23,6 +23,13 @@ public class CampoBasket extends Campo {
     // ----------- << attribute.annotations@AAAAAAF+h+SsyAMFK/M= >>
     // ----------- >>
     private int nroGiocatori;
+    
+    /*
+     * costruttore CampoBasket
+     */
+    public CampoBasket() {
+    	
+    }
 
     public float getAltezzaCanestro() {
         return altezzaCanestro;
