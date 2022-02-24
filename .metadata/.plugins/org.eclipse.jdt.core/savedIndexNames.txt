@@ -1,6 +1,0 @@
-INDEX VERSION 1.131+C:\Users\Torros\Documents\UNIBG\Ingegneria Software\Project Febbraio 2022\Progetto_IngegneriaSoftware-AppelloFebbraio\.metadata\.plugins\org.eclipse.jdt.core
-1865797976.index
-2431734497.index
-1911187669.index
-3261419799.index
-1692353238.index
