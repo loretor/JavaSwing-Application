@@ -16,19 +16,32 @@ import java.time.*;
 // ----------- << class.annotations@AAAAAAF+i5Bd8z8/cWo= >>
 // ----------- >>
 public class RegistroStrutture {
+	
+	protected static RegistroStrutture registro;//l'unica istanza della classe
+	
+	
     // ----------- << attribute.annotations@AAAAAAF/Ih9yqcv7c7Q= >>
     // ----------- >>
     private static Set<Struttura> ListaStrutture;
     
     
     /*
-     * costruttore di RegistroStrutture
+     * costruttore di RegistroStrutture reso private perchè può essere istanziato solo con il metodo getIstance per Pattern Singleton
      */
-    public RegistroStrutture() {
+    private RegistroStrutture() {
     	ListaStrutture = new HashSet<>();
     }
 
     
+    /*
+     * metodo per creare un nuovo registro solo qualora non ci sia già un'altra istanza di RegistroStrutture
+     */
+    public static RegistroStrutture getInstance() {
+		if (registro == null) {
+			registro = new RegistroStrutture();
+		}
+		return registro;	
+	}
     
     
     
@@ -61,6 +74,19 @@ public class RegistroStrutture {
     // ----------- << method.body@AAAAAAF/Ae3NRlS2ang= >>
     // ----------- >>
     }
+    	
+    protected void controlloDisponibilitaCampo() {
+    	
+    }
+    
+    protected void controlloDisponibilitaSpogliatoio() {
+    	
+    }
+    
+    protected void confermaPrenotazione() {
+    	
+    }
+    
 // ----------- << class.extras@AAAAAAF+i5Bd8z8/cWo= >>
 // ----------- >>
 }

@@ -28,6 +28,14 @@ public class Cliente {
     // ----------- >>
     private String CodiceFiscale;
     
+    private RegistroStrutture registro;
+    
+    
+    public Cliente() {
+		// TODO Auto-generated constructor stub
+    	this.registro = RegistroStrutture.registro;
+	}
+    
 
     /*
      * serie di metodi get per ottenere gli attributi della classe
@@ -75,24 +83,18 @@ public class Cliente {
     */
     // ----------- << method.annotations@AAAAAAF+h+SsyALFTmM= >>
     // ----------- >>
-    protected void controlloDisponibilita(String sport, Date orario, boolean spogliatoio, Struttura struttura, boolean collettiva) {
+    protected void controlloDisponibilitaCampo(String sport, Date orario, boolean spogliatoio, Struttura struttura, boolean collettiva) {
     // ----------- << method.body@AAAAAAF+h+SsyALFTmM= >>
     // ----------- >>
     }
     // ----------- << method.annotations@AAAAAAF+h+SsyALL5Xc= >>
     // ----------- >>
-    protected boolean controlloDisponibilitaSpogliatoio() {
+    protected void controlloDisponibilitaSpogliatoio() {
     // ----------- << method.body@AAAAAAF+h+SsyALL5Xc= >>
     // ----------- >>
-    	return true;
+    	
     }
-    // ----------- << method.annotations@AAAAAAF+h+SsyALNTRo= >>
-    // ----------- >>
-    protected boolean controlloBan() {
-    // ----------- << method.body@AAAAAAF+h+SsyALNTRo= >>
-    // ----------- >>
-    	return true;
-    }
+
 // ----------- << class.extras@AAAAAAF+h+SsyALA1XA= >>
 // ----------- >>
 }

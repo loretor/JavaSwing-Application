@@ -141,13 +141,6 @@ public abstract class Campo {
     }
 
 
-
-    // ----------- << method.annotations@AAAAAAF+h+SsyAL1hOw= >>
-    // ----------- >>
-    protected void aggiungiPrenotazione() {
-    // ----------- << method.body@AAAAAAF+h+SsyAL1hOw= >>
-    // ----------- >>
-    }
     // ----------- << method.annotations@AAAAAAF/G83rC8T6iE4= >>
     // ----------- >>
     public void stampaPrenotazione() {

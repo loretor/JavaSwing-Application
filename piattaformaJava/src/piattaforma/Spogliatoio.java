@@ -96,12 +96,6 @@ public class Spogliatoio {
     }
 
 
-    // ----------- << method.annotations@AAAAAAF+h+SsyAL8Se0= >>
-    // ----------- >>
-    protected void aggiungiPrenotazione() {
-    // ----------- << method.body@AAAAAAF+h+SsyAL8Se0= >>
-    // ----------- >>
-    }
     // ----------- << method.annotations@AAAAAAF/G81mDMH+nV0= >>
     // ----------- >>
     public void stampaPrenotazione() {
