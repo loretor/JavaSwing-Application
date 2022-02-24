@@ -28,6 +28,9 @@ public class Cliente {
     // ----------- >>
     private String CodiceFiscale;
 
+    /*
+     * serie di metodi get per ottenere gli attributi della classe
+     */
     private String getNome() {
         return Nome;
     }
@@ -40,6 +43,9 @@ public class Cliente {
         return CodiceFiscale;
     }
 
+    /*
+     * serie di metodi set per settare gli attributi della classe
+     */
     private void setNome(String Nome) {
         this.Nome = Nome;
     }
@@ -58,6 +64,7 @@ public class Cliente {
     // ----------- << method.body@AAAAAAF+h+SsyALEwVw= >>
     // ----------- >>
     }
+    
     /**
     * @param sport 
     * @param orario 
@@ -65,7 +72,6 @@ public class Cliente {
     * @param struttura 
     * @param collettiva
     */
-
     // ----------- << method.annotations@AAAAAAF+h+SsyALFTmM= >>
     // ----------- >>
     protected void controlloDisponibilita(String sport, Date orario, boolean spogliatoio, Struttura struttura, boolean collettiva) {
@@ -77,12 +83,14 @@ public class Cliente {
     protected boolean controlloDisponibilitaSpogliatoio() {
     // ----------- << method.body@AAAAAAF+h+SsyALL5Xc= >>
     // ----------- >>
+    	return true;
     }
     // ----------- << method.annotations@AAAAAAF+h+SsyALNTRo= >>
     // ----------- >>
     protected boolean controlloBan() {
     // ----------- << method.body@AAAAAAF+h+SsyALNTRo= >>
     // ----------- >>
+    	return true;
     }
 // ----------- << class.extras@AAAAAAF+h+SsyALA1XA= >>
 // ----------- >>

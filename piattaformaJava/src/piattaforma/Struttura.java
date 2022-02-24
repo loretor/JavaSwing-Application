@@ -34,7 +34,7 @@ public class Struttura {
 
     // ----------- << attribute.annotations@AAAAAAF/G/HPwGbFGOw= >>
     // ----------- >>
-    private void ConteggioPrenotazioni;
+    private HashMap<Cliente, Integer> ConteggioPrenotazioni;
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALlXF8= >>
     // ----------- >>
@@ -48,6 +48,9 @@ public class Struttura {
     // ----------- >>
     private Set<Spogliatoio> ListaSpogliatoi = new HashSet<>();
 
+    /*
+     * serie dei metodi per ottenere gli attributi della classe
+     */
     public String getNome() {
         return Nome;
     }
@@ -64,7 +67,7 @@ public class Struttura {
         return IDstruttura;
     }
 
-    private void getConteggioPrenotazioni() {
+    private HashMap<Cliente, Integer> getConteggioPrenotazioni() {
         return ConteggioPrenotazioni;
     }
 
@@ -80,6 +83,9 @@ public class Struttura {
         return ListaSpogliatoi;
     }
 
+    /*
+     * serie di metodi per settare gli attributi della classe
+     */
     public void setNome(String Nome) {
         this.Nome = Nome;
     }
@@ -96,67 +102,61 @@ public class Struttura {
         this.IDstruttura = IDstruttura;
     }
 
-    private void setConteggioPrenotazioni(void ConteggioPrenotazioni) {
-        this.ConteggioPrenotazioni = ConteggioPrenotazioni;
-    }
-
-    public void linkListaClientiBan(Cliente _ListaClientiBan) {
-        if (_ListaClientiBan != null) {
-            getListaClientiBan().add(_ListaClientiBan);
+    /*
+     * aggiunge un nuovo cliente alla ListaBan
+     */
+    public void linkListaClientiBan(Cliente cliente) {
+        if (cliente != null) {
+            getListaClientiBan().add(cliente);
         }
     }
 
-    public void linkListaCampi(Campo _ListaCampi) {
-        if (_ListaCampi != null) {
-            _ListaCampi.unlinkStrutturaProprietaria();
-            _ListaCampi.setStrutturaProprietaria(this);
-            getListaCampi().add(_ListaCampi);
+    /*
+     * aggiunge un campo alla struttura e setta al campo il parametro StrutturaProprietaria
+     */
+    public void linkListaCampi(Campo campo) {
+        if (campo != null) {
+        	campo.setStrutturaProprietaria(this);
+            getListaCampi().add(campo);
         }
     }
 
-    public void linkListaSpogliatoi(Spogliatoio _ListaSpogliatoi) {
-        if (_ListaSpogliatoi != null) {
-            _ListaSpogliatoi.unlinkStrutturaProprietaria();
-            _ListaSpogliatoi.setStrutturaProprietaria(this);
-            getListaSpogliatoi().add(_ListaSpogliatoi);
+    /*
+     * aggiunge uno spogliatoio alla struttura e setta allo spogliatoio il parametro StrutturaProprietaria
+     */
+    public void linkListaSpogliatoi(Spogliatoio spogliatoio) {
+        if (spogliatoio != null) {
+        	spogliatoio.setStrutturaProprietaria(this);
+            getListaSpogliatoi().add(spogliatoio);
         }
     }
 
-    public void unlinkListaClientiBan(Cliente _ListaClientiBan) {
-        if (_ListaClientiBan != null) {
-            getListaClientiBan().remove(_ListaClientiBan);
+    /*
+     * rimuove un cliente dalla ListaBan
+     */
+    public void unlinkListaClientiBan(Cliente cliente) {
+        if (cliente != null) {
+            getListaClientiBan().remove(cliente);
         }
     }
 
-    public void unlinkListaClientiBan(Iterator<Cliente> it) {
-        it.remove();
-    }
-
-    public void unlinkListaCampi(Campo _ListaCampi) {
-        if (_ListaCampi != null) {
-            _ListaCampi.setStrutturaProprietaria(null);
-            getListaCampi().remove(_ListaCampi);
+    /*
+     * rimuove un campo dalla lista della struttura e setta l'attributo StrutturaProrpietaria di campo = null
+     */
+    public void unlinkListaCampi(Campo campo) {
+        if (campo != null) {
+        	campo.setStrutturaProprietaria(null);
+            getListaCampi().remove(campo);
         }
     }
 
-    public void unlinkListaCampi(Campo _ListaCampi, Iterator<Campo> it) {
-        if (_ListaCampi != null) {
-            _ListaCampi.setStrutturaProprietaria(null);
-            it.remove();
-        }
-    }
-
-    public void unlinkListaSpogliatoi(Spogliatoio _ListaSpogliatoi) {
-        if (_ListaSpogliatoi != null) {
-            _ListaSpogliatoi.setStrutturaProprietaria(null);
-            getListaSpogliatoi().remove(_ListaSpogliatoi);
-        }
-    }
-
-    public void unlinkListaSpogliatoi(Spogliatoio _ListaSpogliatoi, Iterator<Spogliatoio> it) {
-        if (_ListaSpogliatoi != null) {
-            _ListaSpogliatoi.setStrutturaProprietaria(null);
-            it.remove();
+    /*
+     * rimuove uno spogliatoio dalla lista della struttura e setta l'attributo StrutturaProrpietaria di spogliatoio = null
+     */
+    public void unlinkListaSpogliatoi(Spogliatoio spogliatoio) {
+        if (spogliatoio != null) {
+        	spogliatoio.setStrutturaProprietaria(null);
+            getListaSpogliatoi().remove(spogliatoio);
         }
     }
 

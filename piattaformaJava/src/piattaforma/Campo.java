@@ -40,6 +40,9 @@ public abstract class Campo {
     // ----------- >>
     private Struttura StrutturaProprietaria;
 
+    /*
+     * serie di metodi per restituire gli attributi fondamentali della classe
+     */  
     private String getIDcampo() {
         return IDcampo;
     }
@@ -64,6 +67,9 @@ public abstract class Campo {
         return StrutturaProprietaria;
     }
 
+    /*
+     * serie di metodi per settare singolarmente gli attributi della classe
+     */ 
     private void setIDcampo(String IDcampo) {
         this.IDcampo = IDcampo;
     }
@@ -76,47 +82,42 @@ public abstract class Campo {
         this.nroMaxPersone = nroMaxPersone;
     }
 
-    public void setStrutturaProprietaria(Struttura StrutturaProprietaria) {
+    protected void setStrutturaProprietaria(Struttura StrutturaProprietaria) {
         this.StrutturaProprietaria = StrutturaProprietaria;
     }
 
-    public void linkListaPrenotazioni(Prenotazione _ListaPrenotazioni) {
-        if (_ListaPrenotazioni != null) {
-            _ListaPrenotazioni.unlinkCampoAssociato();
-            _ListaPrenotazioni.setCampoAssociato(this);
-            getListaPrenotazioni().add(_ListaPrenotazioni);
+    /*
+     * aggiunge una nuova prenotazione alla ListaPrenotazioni del Campo
+     */
+    public void linkListaPrenotazioni(Prenotazione prenotazione) {
+        if (prenotazione != null) {
+        	prenotazione.setCampoAssociato(this);
+            getListaPrenotazioni().add(prenotazione);
         }
     }
 
+    /*
+     * serve per aggiornare la struttura proprietaria e aggiungere il campo alla sua lista
+     */
     public void linkStrutturaProprietaria(Struttura _StrutturaProprietaria) {
         if (_StrutturaProprietaria != null) {
             _StrutturaProprietaria.getListaCampi().add(this);
         }
-
-        unlinkStrutturaProprietaria();
+        //aggiorno la StrutturaProprietaria per il campo
         setStrutturaProprietaria(_StrutturaProprietaria);
     }
-
-    public void unlinkListaPrenotazioni(Prenotazione _ListaPrenotazioni) {
-        if (_ListaPrenotazioni != null) {
-            _ListaPrenotazioni.setCampoAssociato(null);
-            getListaPrenotazioni().remove(_ListaPrenotazioni);
+    
+    /*
+     * serve per togliere una prenotazione dalla ListaPrenotazioni e togliere alla prenotazione questo campo
+     */
+    public void unlinkListaPrenotazioni(Prenotazione prenotazione) {
+        if (prenotazione != null) {
+        	prenotazione.setCampoAssociato(null);
+            getListaPrenotazioni().remove(prenotazione);
         }
     }
 
-    public void unlinkListaPrenotazioni(Prenotazione _ListaPrenotazioni, Iterator<Prenotazione> it) {
-        if (_ListaPrenotazioni != null) {
-            _ListaPrenotazioni.setCampoAssociato(null);
-            it.remove();
-        }
-    }
 
-    public void unlinkStrutturaProprietaria() {
-        if (getStrutturaProprietaria() != null) {
-            getStrutturaProprietaria().getListaCampi().remove(this);
-            setStrutturaProprietaria(null);
-        }
-    }
 
     // ----------- << method.annotations@AAAAAAF+h+SsyAL1hOw= >>
     // ----------- >>

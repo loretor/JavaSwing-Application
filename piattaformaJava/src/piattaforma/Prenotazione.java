@@ -36,14 +36,6 @@ public class Prenotazione {
     // ----------- >>
     private float Prezzo;
 
-    // ----------- << attribute.annotations@AAAAAAF+h+SsyALf/Ck= >>
-    // ----------- >>
-    private Campo NomeCampo;
-
-    // ----------- << attribute.annotations@AAAAAAF+h+SsyALgkOA= >>
-    // ----------- >>
-    private Spogliatoio NomeSpogliatoio;
-
     // ----------- << attribute.annotations@AAAAAAF/G//c6YdTHV0= >>
     // ----------- >>
     private String CodiceFiscalePrenotante;
@@ -60,6 +52,10 @@ public class Prenotazione {
     // ----------- >>
     private Spogliatoio SpogliatoioAssociato;
 
+    
+    /*
+     * serie di get per ottenere gli attributi della classe
+     */
     public Date getDataOra() {
         return DataOra;
     }
@@ -80,14 +76,6 @@ public class Prenotazione {
         return Prezzo;
     }
 
-    public Campo getNomeCampo() {
-        return NomeCampo;
-    }
-
-    public Spogliatoio getNomeSpogliatoio() {
-        return NomeSpogliatoio;
-    }
-
     public String getCodiceFiscalePrenotante() {
         return CodiceFiscalePrenotante;
     }
@@ -104,10 +92,14 @@ public class Prenotazione {
         return SpogliatoioAssociato;
     }
 
+    /*
+     * serie di set per settare gli attributi della classe
+     */
     public void setDataOra(Date DataOra) {
         this.DataOra = DataOra;
     }
 
+    //forse è da togliere perchè il codice viene generato in automatico
     protected void setCodicePrenotazione(String CodicePrenotazione) {
         this.CodicePrenotazione = CodicePrenotazione;
     }
@@ -122,14 +114,6 @@ public class Prenotazione {
 
     public void setPrezzo(float Prezzo) {
         this.Prezzo = Prezzo;
-    }
-
-    public void setNomeCampo(Campo NomeCampo) {
-        this.NomeCampo = NomeCampo;
-    }
-
-    public void setNomeSpogliatoio(Spogliatoio NomeSpogliatoio) {
-        this.NomeSpogliatoio = NomeSpogliatoio;
     }
 
     public void setCodiceFiscalePrenotante(String CodiceFiscalePrenotante) {
@@ -148,31 +132,33 @@ public class Prenotazione {
         this.SpogliatoioAssociato = SpogliatoioAssociato;
     }
 
-    public void linkCampoAssociato(Campo _CampoAssociato) {
-        if (_CampoAssociato != null) {
-            _CampoAssociato.getListaPrenotazioni().add(this);
+    /*
+     * metodo per cambiare il campo associato a questa prenotazione e per aggiungere al campo questa prenotazione nella sua lista
+     */
+    public void linkCampoAssociato(Campo campoAssociato) {
+        if (campoAssociato != null) {
+            campoAssociato.getListaPrenotazioni().add(this);
         }
 
-        unlinkCampoAssociato();
-        setCampoAssociato(_CampoAssociato);
+        setCampoAssociato(campoAssociato);
     }
 
-    public void linkSpogliatoioAssociato(Spogliatoio _SpogliatoioAssociato) {
-        if (_SpogliatoioAssociato != null) {
-            _SpogliatoioAssociato.getListaPrenotazioni().add(this);
+    /*
+     * metodo per cambiare lo spogliatoio associato a questa prenotazione e per aggiungere allo spogliatoio questa prenotazione nella sua lista
+     */
+    public void linkSpogliatoioAssociato(Spogliatoio spogliatoioAssociato) {
+        if (spogliatoioAssociato != null) {
+            spogliatoioAssociato.getListaPrenotazioni().add(this);
         }
 
         unlinkSpogliatoioAssociato();
-        setSpogliatoioAssociato(_SpogliatoioAssociato);
+        setSpogliatoioAssociato(spogliatoioAssociato);
     }
 
-    public void unlinkCampoAssociato() {
-        if (getCampoAssociato() != null) {
-            getCampoAssociato().getListaPrenotazioni().remove(this);
-            setCampoAssociato(null);
-        }
-    }
 
+    /*
+     * metodo per togliere lo spogliatoio alla prenotazione e togliere anche allo spogliatoio questa prenotazione dalla sua lista
+     */
     public void unlinkSpogliatoioAssociato() {
         if (getSpogliatoioAssociato() != null) {
             getSpogliatoioAssociato().getListaPrenotazioni().remove(this);

@@ -32,6 +32,9 @@ public class Spogliatoio {
     // ----------- >>
     private Struttura StrutturaProprietaria;
 
+    /*
+     * serie di metodi per ottenere gli attributi della classe
+     */
     public int getNumero() {
         return Numero;
     }
@@ -48,6 +51,9 @@ public class Spogliatoio {
         return StrutturaProprietaria;
     }
 
+    /*
+     * serie di metodi per settare gli attributi della classe
+     */
     public void setNumero(int Numero) {
         this.Numero = Numero;
     }
@@ -56,43 +62,38 @@ public class Spogliatoio {
         this.StrutturaProprietaria = StrutturaProprietaria;
     }
 
-    public void linkListaPrenotazioni(Prenotazione _ListaPrenotazioni) {
-        if (_ListaPrenotazioni != null) {
-            _ListaPrenotazioni.unlinkSpogliatoioAssociato();
-            _ListaPrenotazioni.setSpogliatoioAssociato(this);
-            getListaPrenotazioni().add(_ListaPrenotazioni);
+    /*
+     * aggiungere una prenotazione alla lista delle prenotazioni dello spogliatoio e per settare il campo spogliatoioassociato della prenotazione
+     */
+    public void linkListaPrenotazioni(Prenotazione prenotazione) {
+        if (prenotazione != null) {
+        	prenotazione.unlinkSpogliatoioAssociato();
+        	prenotazione.setSpogliatoioAssociato(this);
+            getListaPrenotazioni().add(prenotazione);
         }
     }
 
-    public void linkStrutturaProprietaria(Struttura _StrutturaProprietaria) {
-        if (_StrutturaProprietaria != null) {
-            _StrutturaProprietaria.getListaSpogliatoi().add(this);
+    /*
+     * settare la struttura proprietaria di uno spogliatoio e aggiungere lo spogliatoio alla lista degli spogliatoi della struttura
+     */
+    public void linkStrutturaProprietaria(Struttura strutturaProprietaria) {
+        if (strutturaProprietaria != null) {
+            strutturaProprietaria.getListaSpogliatoi().add(this);
         }
 
-        unlinkStrutturaProprietaria();
-        setStrutturaProprietaria(_StrutturaProprietaria);
+        setStrutturaProprietaria(strutturaProprietaria);
     }
 
-    public void unlinkListaPrenotazioni(Prenotazione _ListaPrenotazioni) {
-        if (_ListaPrenotazioni != null) {
-            _ListaPrenotazioni.setSpogliatoioAssociato(null);
-            getListaPrenotazioni().remove(_ListaPrenotazioni);
-        }
-    }
-
-    public void unlinkListaPrenotazioni(Prenotazione _ListaPrenotazioni, Iterator<Prenotazione> it) {
-        if (_ListaPrenotazioni != null) {
-            _ListaPrenotazioni.setSpogliatoioAssociato(null);
-            it.remove();
+    /*
+     * per rimuovere dallo spogliatoio una prenotazione e per togliere dalla prenotazione lo spogliatoio associato
+     */
+    public void unlinkListaPrenotazioni(Prenotazione prenotazione) {
+        if (prenotazione != null) {
+        	prenotazione.setSpogliatoioAssociato(null);
+            getListaPrenotazioni().remove(prenotazione);
         }
     }
 
-    public void unlinkStrutturaProprietaria() {
-        if (getStrutturaProprietaria() != null) {
-            getStrutturaProprietaria().getListaSpogliatoi().remove(this);
-            setStrutturaProprietaria(null);
-        }
-    }
 
     // ----------- << method.annotations@AAAAAAF+h+SsyAL8Se0= >>
     // ----------- >>

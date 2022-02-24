@@ -24,12 +24,18 @@ public class RegistroStrutture {
         return ListaStrutture;
     }
 
-    public void linkListaStrutture(Struttura _ListaStrutture) {
-        if (_ListaStrutture != null) {
-            getListaStrutture().add(_ListaStrutture);
+    /*
+     * per aggiungere una nuova struttura alla lista
+     */
+    public void linkListaStrutture(Struttura Strutture) {
+        if (Strutture != null) {
+            getListaStrutture().add(Strutture);
         }
     }
 
+    /*
+     * per rimuovere una struttura dalla lista
+     */
     public void unlinkListaStrutture(Struttura _ListaStrutture) {
         if (_ListaStrutture != null) {
             getListaStrutture().remove(_ListaStrutture);
