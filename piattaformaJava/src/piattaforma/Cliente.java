@@ -27,6 +27,7 @@ public class Cliente {
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALDSJM= >>
     // ----------- >>
     private String CodiceFiscale;
+    
 
     /*
      * serie di metodi get per ottenere gli attributi della classe

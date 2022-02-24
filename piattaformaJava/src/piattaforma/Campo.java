@@ -35,12 +35,28 @@ public abstract class Campo {
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALRqvo= >>
     // ----------- >>
-    private Set<Prenotazione> ListaPrenotazioni = new HashSet<>();
+    private Set<Prenotazione> ListaPrenotazioni;
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALw6xI= >>
     // ----------- >>
     private Struttura StrutturaProprietaria;
+    
+    
+    
+    /*
+     * costruttore di campo che non può essere richiamato se non dalle sottoclassi di Campo stesse
+     */
+    public Campo(String sport, float prezzo, int nmaxpersone, Struttura strutturaproprietaria) {
+    	this.Sport = sport;
+    	this.Prezzo = prezzo;
+    	this.nroMaxPersone = nmaxpersone;
+    	ListaPrenotazioni = new HashSet<>();
+    	setStrutturaProprietaria(strutturaproprietaria);
+    	setIDcampo();
+    }
 
+    
+    
     /*
      * serie di metodi per restituire gli attributi fondamentali della classe
      */  
@@ -71,8 +87,14 @@ public abstract class Campo {
     /*
      * serie di metodi per settare singolarmente gli attributi della classe
      */ 
-    private void setIDcampo(String IDcampo) {
-        this.IDcampo = IDcampo;
+    private void setIDcampo() {    	
+    	for(Struttura s: RegistroStrutture.getListaStrutture()) {
+    		if(s.equals(StrutturaProprietaria)) {
+    			int n = StrutturaProprietaria.getListaCampi().size();
+    	        this.IDcampo = "C_"+ (n+1);
+    	        return;
+    		}
+    	}
     }
 
     public void setSport(String Sport) {

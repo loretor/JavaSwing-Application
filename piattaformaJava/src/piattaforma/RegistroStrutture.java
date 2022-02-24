@@ -15,12 +15,24 @@ import java.time.*;
 
 // ----------- << class.annotations@AAAAAAF+i5Bd8z8/cWo= >>
 // ----------- >>
-public class RegistroStrutture {
+public final class RegistroStrutture {
     // ----------- << attribute.annotations@AAAAAAF/Ih9yqcv7c7Q= >>
     // ----------- >>
-    private Set<Struttura> ListaStrutture = new HashSet<>();
+    private static Set<Struttura> ListaStrutture;
+    
+    
+    /*
+     * costruttore di RegistroStrutture
+     */
+    public RegistroStrutture() {
+    	ListaStrutture = new HashSet<>();
+    }
 
-    public Set<Struttura> getListaStrutture() {
+    
+    
+    
+    
+    public static Set<Struttura> getListaStrutture() {
         return ListaStrutture;
     }
 
@@ -42,9 +54,6 @@ public class RegistroStrutture {
         }
     }
 
-    public void unlinkListaStrutture(Iterator<Struttura> it) {
-        it.remove();
-    }
 
     // ----------- << method.annotations@AAAAAAF/Ae3NRlS2ang= >>
     // ----------- >>

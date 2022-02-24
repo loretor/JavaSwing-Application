@@ -18,7 +18,7 @@ import java.time.*;
 public class Spogliatoio {
     // ----------- << attribute.annotations@AAAAAAF+h+SsyAL6TAM= >>
     // ----------- >>
-    private int Numero;
+    private String IDspogliatoio;
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyAL7r2A= >>
     // ----------- >>
@@ -35,8 +35,8 @@ public class Spogliatoio {
     /*
      * serie di metodi per ottenere gli attributi della classe
      */
-    public int getNumero() {
-        return Numero;
+    public String getIDspogliatoio() {
+        return IDspogliatoio;
     }
 
     public float getPrezzo() {
@@ -54,8 +54,9 @@ public class Spogliatoio {
     /*
      * serie di metodi per settare gli attributi della classe
      */
-    public void setNumero(int Numero) {
-        this.Numero = Numero;
+    public void setIDspogliatoio() {
+    	int n = StrutturaProprietaria.getListaSpogliatoi().size();
+        this.IDspogliatoio = "S_"+ (n+1);
     }
 
     public void setStrutturaProprietaria(Struttura StrutturaProprietaria) {

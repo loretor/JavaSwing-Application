@@ -16,7 +16,8 @@ import java.time.*;
 // ----------- << class.annotations@AAAAAAF+h+SsyAL9hF4= >>
 // ----------- >>
 public class CampoCalcetto extends Campo {
-    // ----------- << attribute.annotations@AAAAAAF+h+SsyAL/8Ls= >>
+
+	// ----------- << attribute.annotations@AAAAAAF+h+SsyAL/8Ls= >>
     // ----------- >>
     private String tipoTerreno;
 
@@ -27,6 +28,16 @@ public class CampoCalcetto extends Campo {
     // ----------- << attribute.annotations@AAAAAAF+h+SsyAMBsEg= >>
     // ----------- >>
     private int nroGiocatori;
+    
+    
+    /*
+     * costruttore CampoCalcetto
+     */
+    public CampoCalcetto(String sport, float prezzo, int nmaxpersone, Struttura strutturaproprietaria) {
+		super(sport, prezzo, nmaxpersone, strutturaproprietaria);
+		// TODO Auto-generated constructor stub
+	}
+    
 
     public String getTipoTerreno() {
         return tipoTerreno;

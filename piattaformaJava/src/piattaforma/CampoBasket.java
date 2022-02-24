@@ -16,7 +16,13 @@ import java.time.*;
 // ----------- << class.annotations@AAAAAAF+h+SsyAMCvEA= >>
 // ----------- >>
 public class CampoBasket extends Campo {
-    // ----------- << attribute.annotations@AAAAAAF+h+SsyAMEkKE= >>
+	
+    public CampoBasket(String sport, float prezzo, int nmaxpersone, Struttura strutturaproprietaria) {
+		super(sport, prezzo, nmaxpersone, strutturaproprietaria);
+		// TODO Auto-generated constructor stub
+	}
+
+	// ----------- << attribute.annotations@AAAAAAF+h+SsyAMEkKE= >>
     // ----------- >>
     private float altezzaCanestro;
 
@@ -27,9 +33,7 @@ public class CampoBasket extends Campo {
     /*
      * costruttore CampoBasket
      */
-    public CampoBasket() {
-    	
-    }
+    
 
     public float getAltezzaCanestro() {
         return altezzaCanestro;
