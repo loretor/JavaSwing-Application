@@ -15,7 +15,7 @@ import java.time.*;
 
 // ----------- << class.annotations@AAAAAAF+i5Bd8z8/cWo= >>
 // ----------- >>
-public final class RegistroStrutture {
+public class RegistroStrutture {
     // ----------- << attribute.annotations@AAAAAAF/Ih9yqcv7c7Q= >>
     // ----------- >>
     private static Set<Struttura> ListaStrutture;

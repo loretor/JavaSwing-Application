@@ -33,6 +33,8 @@ public class CampoTennis extends Campo {
 		super(sport, prezzo, nmaxpersone, strutturaproprietaria);
 		// TODO Auto-generated constructor stub
 	}
+    
+    
 
     public String getTipoTerreno() {
         return tipoTerreno;
