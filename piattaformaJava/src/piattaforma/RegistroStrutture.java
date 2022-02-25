@@ -75,16 +75,22 @@ public class RegistroStrutture {
     // ----------- >>
     }
     	
-    protected void controlloDisponibilitaCampo() {
-    	
+    protected Campo controlloDisponibilitaCampo(String sport, Date dataora, Struttura struttura) {
+    	// scrito a caso
+    	return null;
     }
     
-    protected void controlloDisponibilitaSpogliatoio() {
-    	
+    protected Spogliatoio controlloDisponibilitaSpogliatoio(Date dataora, Struttura struttura) {
+    	//scritto a caso
+    	return null;
     }
     
     protected void confermaPrenotazione() {
     	
+    }
+    
+    private int calcolaSconto() {
+    	return 0;
     }
     
 // ----------- << class.extras@AAAAAAF+i5Bd8z8/cWo= >>

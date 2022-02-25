@@ -6245,7 +6245,7 @@
 															"top": 366,
 															"width": 681,
 															"height": 13,
-															"text": "-Nome: String[1]",
+															"text": "#Nome: String[1]",
 															"horizontalAlignment": 0
 														},
 														{
@@ -6262,7 +6262,7 @@
 															"top": 381,
 															"width": 681,
 															"height": 13,
-															"text": "-Cognome: String[1]",
+															"text": "#Cognome: String[1]",
 															"horizontalAlignment": 0
 														},
 														{
@@ -6281,13 +6281,30 @@
 															"height": 13,
 															"text": "#CodiceFiscale: String[1]",
 															"horizontalAlignment": 0
+														},
+														{
+															"_type": "UMLAttributeView",
+															"_id": "AAAAAAF/MJcWxlosnEE=",
+															"_parent": {
+																"$ref": "AAAAAAF+h+SsxgHtuPQ="
+															},
+															"model": {
+																"$ref": "AAAAAAF/MJcWpVopYTE="
+															},
+															"font": "Arial;13;0",
+															"left": 13,
+															"top": 411,
+															"width": 681,
+															"height": 13,
+															"text": "#registro: RegistroStrutture",
+															"horizontalAlignment": 0
 														}
 													],
 													"font": "Arial;13;0",
 													"left": 8,
 													"top": 361,
 													"width": 691,
-													"height": 53
+													"height": 68
 												},
 												{
 													"_type": "UMLOperationCompartmentView",
@@ -6299,23 +6316,6 @@
 														"$ref": "AAAAAAF+h+SsyALA1XA="
 													},
 													"subViews": [
-														{
-															"_type": "UMLOperationView",
-															"_id": "AAAAAAF+h+SsxgHyDoo=",
-															"_parent": {
-																"$ref": "AAAAAAF+h+SsxgHxUw4="
-															},
-															"model": {
-																"$ref": "AAAAAAF+h+SsyALEwVw="
-															},
-															"font": "Arial;13;0",
-															"left": 13,
-															"top": 419,
-															"width": 681,
-															"height": 13,
-															"text": "#calcoloSconto()",
-															"horizontalAlignment": 0
-														},
 														{
 															"_type": "UMLOperationView",
 															"_id": "AAAAAAF+h+SsxgHze+8=",
@@ -6330,7 +6330,7 @@
 															"top": 434,
 															"width": 681,
 															"height": 13,
-															"text": "#controlloDisponibilitaCampo(sport: String, orario: Date, spogliatoio: boolean, struttura: Struttura, spogliatoio: boolean)",
+															"text": "#controlloDisponibilitaCampo()",
 															"horizontalAlignment": 0
 														},
 														{
@@ -6353,9 +6353,9 @@
 													],
 													"font": "Arial;13;0",
 													"left": 8,
-													"top": 414,
+													"top": 429,
 													"width": 691,
-													"height": 53
+													"height": 38
 												},
 												{
 													"_type": "UMLReceptionCompartmentView",
@@ -10057,13 +10057,30 @@
 															"height": 13,
 															"text": "#confermaPrenotazione()",
 															"horizontalAlignment": 0
+														},
+														{
+															"_type": "UMLOperationView",
+															"_id": "AAAAAAF/MKWiR2JT73E=",
+															"_parent": {
+																"$ref": "AAAAAAF+i5Bd9D9IUKE="
+															},
+															"model": {
+																"$ref": "AAAAAAF/MKWiMGJBnbU="
+															},
+															"font": "Arial;13;0",
+															"left": 21,
+															"top": 172,
+															"width": 251,
+															"height": 13,
+															"text": "-calcolaSconto()",
+															"horizontalAlignment": 0
 														}
 													],
 													"font": "Arial;13;0",
 													"left": 16,
 													"top": 107,
 													"width": 261,
-													"height": 68
+													"height": 83
 												},
 												{
 													"_type": "UMLReceptionCompartmentView",
@@ -10414,7 +10431,7 @@
 												"$ref": "AAAAAAF+h+SsyALA1XA="
 											},
 											"name": "Nome",
-											"visibility": "private",
+											"visibility": "protected",
 											"type": "String",
 											"multiplicity": "1",
 											"isUnique": true
@@ -10426,7 +10443,7 @@
 												"$ref": "AAAAAAF+h+SsyALA1XA="
 											},
 											"name": "Cognome",
-											"visibility": "private",
+											"visibility": "protected",
 											"type": "String",
 											"multiplicity": "1"
 										},
@@ -10441,18 +10458,21 @@
 											"type": "String",
 											"multiplicity": "1",
 											"isUnique": true
-										}
-									],
-									"operations": [
+										},
 										{
-											"_type": "UMLOperation",
-											"_id": "AAAAAAF+h+SsyALEwVw=",
+											"_type": "UMLAttribute",
+											"_id": "AAAAAAF/MJcWpVopYTE=",
 											"_parent": {
 												"$ref": "AAAAAAF+h+SsyALA1XA="
 											},
-											"name": "calcoloSconto",
-											"visibility": "protected"
-										},
+											"name": "registro",
+											"visibility": "protected",
+											"type": {
+												"$ref": "AAAAAAF+i5Bd8z8/cWo="
+											}
+										}
+									],
+									"operations": [
 										{
 											"_type": "UMLOperation",
 											"_id": "AAAAAAF+h+SsyALFTmM=",
@@ -10460,56 +10480,7 @@
 												"$ref": "AAAAAAF+h+SsyALA1XA="
 											},
 											"name": "controlloDisponibilitaCampo",
-											"visibility": "protected",
-											"parameters": [
-												{
-													"_type": "UMLParameter",
-													"_id": "AAAAAAF+h+SsyALGiq4=",
-													"_parent": {
-														"$ref": "AAAAAAF+h+SsyALFTmM="
-													},
-													"name": "sport",
-													"type": "String"
-												},
-												{
-													"_type": "UMLParameter",
-													"_id": "AAAAAAF+h+SsyALHqBw=",
-													"_parent": {
-														"$ref": "AAAAAAF+h+SsyALFTmM="
-													},
-													"name": "orario",
-													"type": "Date"
-												},
-												{
-													"_type": "UMLParameter",
-													"_id": "AAAAAAF+h+SsyALIcmk=",
-													"_parent": {
-														"$ref": "AAAAAAF+h+SsyALFTmM="
-													},
-													"name": "spogliatoio",
-													"type": "boolean"
-												},
-												{
-													"_type": "UMLParameter",
-													"_id": "AAAAAAF+h+SsyALJuYo=",
-													"_parent": {
-														"$ref": "AAAAAAF+h+SsyALFTmM="
-													},
-													"name": "struttura",
-													"type": {
-														"$ref": "AAAAAAF+h+SsyALiE3I="
-													}
-												},
-												{
-													"_type": "UMLParameter",
-													"_id": "AAAAAAF+h+SsyALKCdk=",
-													"_parent": {
-														"$ref": "AAAAAAF+h+SsyALFTmM="
-													},
-													"name": "spogliatoio",
-													"type": "boolean"
-												}
-											]
+											"visibility": "protected"
 										},
 										{
 											"_type": "UMLOperation",
@@ -11201,6 +11172,15 @@
 											},
 											"name": "confermaPrenotazione",
 											"visibility": "protected"
+										},
+										{
+											"_type": "UMLOperation",
+											"_id": "AAAAAAF/MKWiMGJBnbU=",
+											"_parent": {
+												"$ref": "AAAAAAF+i5Bd8z8/cWo="
+											},
+											"name": "calcolaSconto",
+											"visibility": "private"
 										}
 									]
 								}
