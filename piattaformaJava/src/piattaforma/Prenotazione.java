@@ -56,18 +56,31 @@ public class Prenotazione {
    
     
     /*
-     * costrutture della classe
+     * costrutture della classe con Spogliatoio
      */
-    public Prenotazione(Date data, String sport, boolean docce, String cf, Struttura struttura, Campo campo, Spogliatoio spogliatoio ) {
+    public Prenotazione(Date data, String sport, String cf, Struttura struttura, Campo campo, Spogliatoio spogliatoio ) {
 		// TODO Auto-generated constructor stub
     	DataOra=data;
     	Sport=sport;
-    	Spogliatoio=docce;
+    	Spogliatoio=true;
     	CodiceFiscalePrenotante=cf;
     	NomeStruttura=struttura;
     	linkCampoAssociato(campo);
     	linkSpogliatoioAssociato(spogliatoio);
-    	
+
+	}
+    
+    /*
+     * costrutture della classe senza Spogliatoio
+     */
+    public Prenotazione(Date data, String sport, String cf, Struttura struttura, Campo campo) {
+		// TODO Auto-generated constructor stub
+    	DataOra=data;
+    	Sport=sport;
+    	Spogliatoio=false;
+    	CodiceFiscalePrenotante=cf;
+    	NomeStruttura=struttura;
+    	linkCampoAssociato(campo);	
 	}
     
     /*
@@ -190,6 +203,7 @@ public class Prenotazione {
     		costoPrenotazione+=SpogliatoioAssociato.getPrezzo();
     	}
     	
+    	//calcolo di un possibile sconto
     	Map<String,Integer> lista = NomeStruttura.getConteggioPrenotazioni();
     	Iterator<Entry<String,Integer>> it= lista.entrySet().iterator();
     	
