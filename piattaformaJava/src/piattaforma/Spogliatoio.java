@@ -71,9 +71,9 @@ public class Spogliatoio {
     /*
      * serie di metodi per settare gli attributi della classe
      */
-    private void setIDSpogliatoio() {    	
+    protected void setIDSpogliatoio() {    	
 		int n = StrutturaProprietaria.getListaSpogliatoi().size();
-		this.IDspogliatoio = "S_"+ (n+1);
+		this.IDspogliatoio = "S_"+ n;
 		return;
     }
 
@@ -115,22 +115,6 @@ public class Spogliatoio {
         }
     }
     
-    
-
-
-
-    // ----------- << method.annotations@AAAAAAF/G81mDMH+nV0= >>
-    /**
-     * metodo che verrà richiamato dalla struttura proprietaria per poter stampare le prenotazioni di questo Spogliatoio
-     * 
-     * @return ritorna la lista delle prenotazioni associate a questo Spogliatoio
-     */
-    // ----------- >>
-    public Set<Prenotazione> stampaPrenotazione() {
-    // ----------- << method.body@AAAAAAF/G81mDMH+nV0= >>
-    	return ListaPrenotazioni;
-    // ----------- >>
-    }
 // ----------- << class.extras@AAAAAAF+h+SsyAL28Vw= >>
 // ----------- >>
 }

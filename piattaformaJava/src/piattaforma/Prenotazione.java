@@ -67,7 +67,8 @@ public class Prenotazione {
     	NomeStruttura=struttura;
     	linkCampoAssociato(campo);
     	linkSpogliatoioAssociato(spogliatoio);
-
+    	setCodicePrenotazione();
+    	calcolaPrezzo();
 	}
     
     /*
@@ -80,7 +81,9 @@ public class Prenotazione {
     	Spogliatoio=false;
     	CodiceFiscalePrenotante=cf;
     	NomeStruttura=struttura;
-    	linkCampoAssociato(campo);	
+    	linkCampoAssociato(campo);
+    	setCodicePrenotazione();
+    	calcolaPrezzo();
 	}
     
     /*
@@ -131,7 +134,7 @@ public class Prenotazione {
 
     
     protected void setCodicePrenotazione() {
-    	contPrenotazioni+=1;
+    	contPrenotazioni +=1;
         CodicePrenotazione ="P_"+contPrenotazioni;
     }
 
@@ -139,9 +142,6 @@ public class Prenotazione {
         this.Sport = Sport;
     }
 
-    public void setSpogliatoio(boolean Spogliatoio) {
-        this.Spogliatoio = Spogliatoio;
-    }
 
     public void setCodiceFiscalePrenotante(String CodiceFiscalePrenotante) {
         this.CodiceFiscalePrenotante = CodiceFiscalePrenotante;
@@ -215,6 +215,7 @@ public class Prenotazione {
     		}
     	}
     	
+    	Prezzo = costoPrenotazione;
     // ----------- >>
     }
 // ----------- << class.extras@AAAAAAF+h+SsyALPzog= >>

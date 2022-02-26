@@ -44,7 +44,7 @@ public class CampoBasketTest {
 	public void testGetListaPrenotazioni() {
 		Set<Prenotazione> lista= new HashSet<>();
 		LocalDateTime d= LocalDateTime.of(2022,12,10, 11, 36);
-		Prenotazione p =new Prenotazione(d,"Basket","CIAO",s,campo);
+		Prenotazione p =new Prenotazione(d,"Basket","TSRALS04S16A787",s,campo);
 		lista.add(p);
 		campo.linkListaPrenotazioni(p);
 		assertEquals(campo.getListaPrenotazioni(), lista);
@@ -65,7 +65,7 @@ public class CampoBasketTest {
 	@Test
 	public void testLinkListaPrenotazioni() {
 		LocalDateTime d= LocalDateTime.of(2022,12,10, 11, 36);
-		Prenotazione p =new Prenotazione(d,"Basket","CIAO",s,campo);
+		Prenotazione p =new Prenotazione(d,"Basket","TSRALS04S16A787",s,campo);
 		campo.linkListaPrenotazioni(p);
 		int n=campo.getListaPrenotazioni().size();
 		assertEquals(n,1);
@@ -81,7 +81,7 @@ public class CampoBasketTest {
 	@Test
 	public void testUnlinkListaPrenotazioni() {
 		LocalDateTime d= LocalDateTime.of(2022,12,10, 11, 36);
-		Prenotazione p =new Prenotazione(d,"Basket","CIAO",s,campo);
+		Prenotazione p =new Prenotazione(d,"Basket","TSRALS04S16A787",s,campo);
 		campo.linkListaPrenotazioni(p);
 		campo.unlinkListaPrenotazioni(p);
 		int n=campo.getListaPrenotazioni().size();
@@ -92,7 +92,14 @@ public class CampoBasketTest {
 	public void testGetIDcampo() {
 		assertEquals(campo.getIDcampo(),"C_1");
 		assertEquals(campo2.getIDcampo(),"C_2");
-		fail(campo.getStrutturaProprietaria().getNome());
 	}
+	
+	/*
+	@Test
+	public void setIDSpogliatoio() {    	
+		fail("Not yet implemented");
+    }
+    */
+
 
 }

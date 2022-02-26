@@ -87,7 +87,7 @@ public abstract class Campo {
      */ 
     protected void setIDcampo() {    	
 		int n = StrutturaProprietaria.getListaCampi().size();
-		this.IDcampo = "C_"+ (n+1);
+		this.IDcampo = "C_"+ n;
     }
 
     protected void setStrutturaProprietaria(Struttura StrutturaProprietaria) {

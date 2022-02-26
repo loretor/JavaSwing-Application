@@ -27,9 +27,9 @@ public class RegistroStrutture {
     
     
     /*
-     * costruttore di RegistroStrutture reso private perchè può essere istanziato solo con il metodo getIstance per Pattern Singleton
+     * costruttore di RegistroStrutture reso protected perchè può essere istanziato solo con il metodo getIstance per Pattern Singleton
      */
-    private RegistroStrutture() {
+    protected RegistroStrutture() {
     	ListaStrutture = new HashSet<>();
     }
 
