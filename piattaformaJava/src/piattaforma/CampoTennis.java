@@ -20,10 +20,6 @@ public class CampoTennis extends Campo {
 	// ----------- << attribute.annotations@AAAAAAF+h+SsyAMIpFY= >>
     // ----------- >>
     private String tipoTerreno;
-
-    // ----------- << attribute.annotations@AAAAAAF+h+SsyAMJ7xY= >>
-    // ----------- >>
-    private int nroGiocatori;
     
     
     /*

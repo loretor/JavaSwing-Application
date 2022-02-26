@@ -140,8 +140,8 @@ public abstract class Campo {
 	 */
     // ----------- >>
     public Set<Prenotazione> stampaPrenotazione() {
-    	return this.ListaPrenotazioni;
     // ----------- << method.body@AAAAAAF/G83rC8T6iE4= >>
+    	return this.ListaPrenotazioni;
    // ----------- >>
     	
     }
