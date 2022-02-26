@@ -39,9 +39,6 @@ public class CampoTennis extends Campo {
         return tipoTerreno;
     }
 
-    public int getNroGiocatori() {
-        return nroGiocatori;
-    }
 
 // ----------- << class.extras@AAAAAAF+h+SsyAMGpq8= >>
 // ----------- >>

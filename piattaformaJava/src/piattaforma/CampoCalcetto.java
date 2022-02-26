@@ -48,9 +48,6 @@ public class CampoCalcetto extends Campo {
         return campoCoperto;
     }
 
-    public int getNroGiocatori() {
-        return nroGiocatori;
-    }
 
 // ----------- << class.extras@AAAAAAF+h+SsyAL9hF4= >>
 // ----------- >>

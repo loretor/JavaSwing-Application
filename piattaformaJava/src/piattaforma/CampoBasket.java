@@ -29,17 +29,14 @@ public class CampoBasket extends Campo {
 		super(prezzo, strutturaproprietaria);
 		// TODO Auto-generated constructor stub
 		Sport="Basket";
-		nroGiocatori=10;
 		altezzaCanestro=3.05;
+		nroGiocatori=10;
 	}
 
     public double getAltezzaCanestro() {
         return altezzaCanestro;
     }
 
-    public int getNroGiocatori() {
-        return nroGiocatori;
-    }
 
     public void setAltezzaCanestro(double h) {
     	altezzaCanestro=h;

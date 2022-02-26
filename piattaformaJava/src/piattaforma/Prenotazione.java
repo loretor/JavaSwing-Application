@@ -19,7 +19,7 @@ public class Prenotazione {
 	public static int contPrenotazioni=0;
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALaojI= >>
     // ----------- >>
-    private Date DataOra;
+    private LocalDateTime DataOra;
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALb16k= >>
     // ----------- >>
@@ -58,7 +58,7 @@ public class Prenotazione {
     /*
      * costrutture della classe con Spogliatoio
      */
-    public Prenotazione(Date data, String sport, String cf, Struttura struttura, Campo campo, Spogliatoio spogliatoio ) {
+    public Prenotazione(LocalDateTime data, String sport, String cf, Struttura struttura, Campo campo, Spogliatoio spogliatoio ) {
 		// TODO Auto-generated constructor stub
     	DataOra=data;
     	Sport=sport;
@@ -73,7 +73,7 @@ public class Prenotazione {
     /*
      * costrutture della classe senza Spogliatoio
      */
-    public Prenotazione(Date data, String sport, String cf, Struttura struttura, Campo campo) {
+    public Prenotazione(LocalDateTime data, String sport, String cf, Struttura struttura, Campo campo) {
 		// TODO Auto-generated constructor stub
     	DataOra=data;
     	Sport=sport;
@@ -86,7 +86,7 @@ public class Prenotazione {
     /*
      * serie di get per ottenere gli attributi della classe
      */
-    public Date getDataOra() {
+    public LocalDateTime getDataOra() {
         return DataOra;
     }
 
@@ -125,7 +125,7 @@ public class Prenotazione {
     /*
      * serie di set per settare gli attributi della classe
      */
-    public void setDataOra(Date DataOra) {
+    public void setDataOra(LocalDateTime DataOra) {
         this.DataOra = DataOra;
     }
 

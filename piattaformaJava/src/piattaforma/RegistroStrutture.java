@@ -169,7 +169,7 @@ public class RegistroStrutture {
      * @param campo indica il campo presso cui si vuole prenotare
      * 
      */
-    protected void confermaPrenotazioneNOSpogliatoio(Date dataora, String sport, String cf, Struttura struttura, Campo campo) {
+    protected void confermaPrenotazioneNOSpogliatoio(LocalDateTime dataora, String sport, String cf, Struttura struttura, Campo campo) {
     	Prenotazione p = new Prenotazione(dataora, sport, cf, struttura, campo);
     	
     	if(struttura.controllaBan(cf)) {
@@ -193,7 +193,7 @@ public class RegistroStrutture {
      * @param spogliatoio indica lo spogliatoio presso cui si vuole prenotare
      * 
      */
-    protected void confermaPrenotazioneCONSpogliatoio(Date dataora, String sport, String cf, Struttura struttura, Campo campo, Spogliatoio spogliatoio) {
+    protected void confermaPrenotazioneCONSpogliatoio(LocalDateTime dataora, String sport, String cf, Struttura struttura, Campo campo, Spogliatoio spogliatoio) {
     	Prenotazione p = new Prenotazione(dataora, sport, cf, struttura, campo, spogliatoio);
     	
     	if(struttura.controllaBan(cf)) {

@@ -31,8 +31,6 @@ public class Spogliatoio {
     // ----------- >>
     private Struttura StrutturaProprietaria;
     
-    
-    private RegistroStrutture registro;
 
     
     /*
@@ -42,7 +40,6 @@ public class Spogliatoio {
     	this.Prezzo = prezzo;
     	ListaPrenotazioni = new HashSet<>();
     	linkStrutturaProprietaria(strutturaproprietaria);
-    	this.registro = RegistroStrutture.registro;
     	setIDSpogliatoio();
     }
     
@@ -75,13 +72,9 @@ public class Spogliatoio {
      * serie di metodi per settare gli attributi della classe
      */
     private void setIDSpogliatoio() {    	
-    	for(Struttura s: registro.getListaStrutture()) {
-    		if(s.equals(StrutturaProprietaria)) {
-    			int n = StrutturaProprietaria.getListaSpogliatoi().size();
-    	        this.IDspogliatoio = "S_"+ (n+1);
-    	        return;
-    		}
-    	}
+		int n = StrutturaProprietaria.getListaSpogliatoi().size();
+		this.IDspogliatoio = "S_"+ (n+1);
+		return;
     }
 
     public void setStrutturaProprietaria(Struttura StrutturaProprietaria) {

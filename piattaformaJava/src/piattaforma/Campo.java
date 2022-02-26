@@ -42,7 +42,6 @@ public abstract class Campo {
     private Struttura StrutturaProprietaria;
     
     
-    private RegistroStrutture registro;
     
     /*
      * costruttore di campo che non può essere richiamato se non dalle sottoclassi di Campo stesse
@@ -50,10 +49,8 @@ public abstract class Campo {
     public Campo(float prezzo, Struttura strutturaproprietaria) {
     	this.Prezzo = prezzo;
     	ListaPrenotazioni = new HashSet<>();
-    	setStrutturaProprietaria(strutturaproprietaria);
+    	linkStrutturaProprietaria(strutturaproprietaria);
     	setIDcampo();
-    	//questa variabile riprende l'unica possibile istanza di RegistroStrutture
-    	this.registro = RegistroStrutture.registro;
     }
 
     
@@ -61,7 +58,7 @@ public abstract class Campo {
     /*
      * serie di metodi per restituire gli attributi fondamentali della classe
      */  
-    private String getIDcampo() {
+    protected String getIDcampo() {
         return IDcampo;
     }
 
@@ -88,14 +85,9 @@ public abstract class Campo {
     /*
      * serie di metodi per settare singolarmente gli attributi della classe
      */ 
-    private void setIDcampo() {    	
-    	for(Struttura s: registro.getListaStrutture()) {
-    		if(s.equals(StrutturaProprietaria)) {
-    			int n = StrutturaProprietaria.getListaCampi().size();
-    	        this.IDcampo = "C_"+ (n+1);
-    	        return;
-    		}
-    	}
+    protected void setIDcampo() {    	
+		int n = StrutturaProprietaria.getListaCampi().size();
+		this.IDcampo = "C_"+ (n+1);
     }
 
     protected void setStrutturaProprietaria(Struttura StrutturaProprietaria) {

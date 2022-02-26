@@ -6,23 +6,25 @@ import org.junit.Test;
 
 public class ClienteTest {
 
+	Cliente c= new Cliente("Matteo","Carminati","CRMMTT80A12A794Q");
+
+	@Test
+	public void testGetNome() {
+		assertEquals(c.getNome(), "Matteo");
+	}
+
+	@Test
+	public void testGetCognome() {
+		assertEquals(c.getCognome(), "Carminati");
+	}
+
 	@Test
 	public void testGetCodiceFiscale() {
-		fail("Not yet implemented");
+		assertEquals(c.getCodiceFiscale(), "CRMMTT80A12A794Q");
 	}
 
-	@Test
-	public void testSetCodiceFiscale() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testCalcoloSconto() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testControlloDisponibilita() {
+	/*@Test
+	public void testControlloDisponibilitaCampo() {
 		fail("Not yet implemented");
 	}
 
@@ -30,10 +32,7 @@ public class ClienteTest {
 	public void testControlloDisponibilitaSpogliatoio() {
 		fail("Not yet implemented");
 	}
-
-	@Test
-	public void testControlloBan() {
-		fail("Not yet implemented");
-	}
-
+	 
+	 *Essendo metodi richimati, non li testimao nella classse Cliente ma in quelle in cui sono stati definiti
+	 */
 }
