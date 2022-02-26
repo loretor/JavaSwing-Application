@@ -9,7 +9,6 @@ import java.util.*;
 import java.time.*;
 
 
-
 // ----------- << imports@AAAAAAF+h+SsyAL28Vw= >>
 // ----------- >>
 
@@ -26,12 +25,30 @@ public class Spogliatoio {
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALURH0= >>
     // ----------- >>
-    private Set<Prenotazione> ListaPrenotazioni = new HashSet<>();
+    private Set<Prenotazione> ListaPrenotazioni;
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyAL5VLU= >>
     // ----------- >>
     private Struttura StrutturaProprietaria;
+    
+    
+    private RegistroStrutture registro;
 
+    
+    /*
+     * costruttore Spogliatoio
+     */
+    public Spogliatoio(float prezzo, Struttura strutturaproprietaria) {
+    	this.Prezzo = prezzo;
+    	ListaPrenotazioni = new HashSet<>();
+    	linkStrutturaProprietaria(strutturaproprietaria);
+    	this.registro = RegistroStrutture.registro;
+    	setIDSpogliatoio();
+    }
+    
+    
+    
+    
     /*
      * serie di metodi per ottenere gli attributi della classe
      */
@@ -51,18 +68,28 @@ public class Spogliatoio {
         return StrutturaProprietaria;
     }
 
+    
+    
+    
     /*
      * serie di metodi per settare gli attributi della classe
      */
-    public void setIDspogliatoio() {
-    	int n = StrutturaProprietaria.getListaSpogliatoi().size();
-        this.IDspogliatoio = "S_"+ (n+1);
+    private void setIDSpogliatoio() {    	
+    	for(Struttura s: registro.getListaStrutture()) {
+    		if(s.equals(StrutturaProprietaria)) {
+    			int n = StrutturaProprietaria.getListaSpogliatoi().size();
+    	        this.IDspogliatoio = "S_"+ (n+1);
+    	        return;
+    		}
+    	}
     }
 
     public void setStrutturaProprietaria(Struttura StrutturaProprietaria) {
         this.StrutturaProprietaria = StrutturaProprietaria;
     }
 
+    
+    
     /*
      * aggiungere una prenotazione alla lista delle prenotazioni dello spogliatoio e per settare il campo spogliatoioassociato della prenotazione
      */
@@ -94,12 +121,21 @@ public class Spogliatoio {
             getListaPrenotazioni().remove(prenotazione);
         }
     }
+    
+    
+
 
 
     // ----------- << method.annotations@AAAAAAF/G81mDMH+nV0= >>
+    /**
+     * metodo che verrà richiamato dalla struttura proprietaria per poter stampare le prenotazioni di questo Spogliatoio
+     * 
+     * @return ritorna la lista delle prenotazioni associate a questo Spogliatoio
+     */
     // ----------- >>
-    public void stampaPrenotazione() {
+    public Set<Prenotazione> stampaPrenotazione() {
     // ----------- << method.body@AAAAAAF/G81mDMH+nV0= >>
+    	return ListaPrenotazioni;
     // ----------- >>
     }
 // ----------- << class.extras@AAAAAAF+h+SsyAL28Vw= >>
