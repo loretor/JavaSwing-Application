@@ -77,7 +77,7 @@ public abstract class Campo {
         return nroGiocatori;
     }
 
-    public Set<Prenotazione> getListaPrenotazioni() {
+    protected Set<Prenotazione> getListaPrenotazioni() {
         return ListaPrenotazioni;
     }
 
@@ -131,19 +131,6 @@ public abstract class Campo {
         	prenotazione.setCampoAssociato(null);
             getListaPrenotazioni().remove(prenotazione);
         }
-    }
-
-
-    // ----------- << method.annotations@AAAAAAF/G83rC8T6iE4= >>
-    /**
-	 * @return ritorno la lista delle prenotazioni associate al campo
-	 */
-    // ----------- >>
-    public Set<Prenotazione> stampaPrenotazione() {
-    // ----------- << method.body@AAAAAAF/G83rC8T6iE4= >>
-    	return this.ListaPrenotazioni;
-   // ----------- >>
-    	
     }
 // ----------- << class.extras@AAAAAAF+h+SsyALtH+M= >>
 // ----------- >>
