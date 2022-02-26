@@ -18,33 +18,42 @@ import java.time.*;
 public class Cliente {
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALBPyI= >>
     // ----------- >>
-    private String Nome;
+    protected String Nome;
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALCu5k= >>
     // ----------- >>
-    private String Cognome;
+    protected String Cognome;
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALDSJM= >>
     // ----------- >>
-    private String CodiceFiscale;
+    protected String CodiceFiscale;
     
     private RegistroStrutture registro;
     
     
-    public Cliente() {
-		// TODO Auto-generated constructor stub
+    
+    
+    /*
+     * costruttore di Cliente
+     */
+    public Cliente(String nome, String cognome, String cf) {
+    	this.Nome = nome;
+    	this.Cognome = cognome;
+    	this.CodiceFiscale = cf;
+		//questa variabile riprende l'unica possibile istanza di RegistroStrutture
     	this.registro = RegistroStrutture.registro;
 	}
     
 
+    
     /*
      * serie di metodi get per ottenere gli attributi della classe
      */
-    private String getNome() {
+    protected String getNome() {
         return Nome;
     }
 
-    private String getCognome() {
+    protected String getCognome() {
         return Cognome;
     }
 
@@ -52,6 +61,8 @@ public class Cliente {
         return CodiceFiscale;
     }
 
+    
+    
     /*
      * serie di metodi set per settare gli attributi della classe
      */
@@ -63,34 +74,52 @@ public class Cliente {
         this.Cognome = Cognome;
     }
 
-    protected void setCodiceFiscale(String CodiceFiscale) {
+    private void setCodiceFiscale(String CodiceFiscale) {
         this.CodiceFiscale = CodiceFiscale;
     }
 
-    // ----------- << method.annotations@AAAAAAF+h+SsyALEwVw= >>
+    
+    
+    
+    
+    // ----------- << method.annotations@AAAAAAF+h+SsyALFTmM= >>
+    /**
+     * metodo che va a richiamare il metodo del registro associato a cliente, in quanto si vuole che la funzione non svolga nulla ma faccia tutto la classe RegistroStrutture
+     * viene quindi implementato il pattern design DELEGATION
+     * 
+     * @param sport 
+     * @param dataora 
+     * @param struttura
+     * 
+     * @return ritorna un oggetto Campo qualora tutte le condizioni indicate rispettino quelle del campo che viene ritornato
+     */
     // ----------- >>
-    protected void calcoloSconto() {
-    // ----------- << method.body@AAAAAAF+h+SsyALEwVw= >>
+    protected Campo controlloDisponibilitaCampo(String sport, Date dataora, Struttura struttura) {
+    // ----------- << method.body@AAAAAAF+h+SsyALFTmM= >>
+    	return registro.controlloDisponibilitaCampo(sport, dataora, struttura);
     // ----------- >>
     }
     
-    /**
-    * @param sport 
-    * @param orario 
-    * @param spogliatoio 
-    * @param struttura 
-    * @param collettiva
-    */
-    // ----------- << method.annotations@AAAAAAF+h+SsyALFTmM= >>
-    // ----------- >>
-    protected void controlloDisponibilitaCampo(String sport, Date orario, boolean spogliatoio, Struttura struttura, boolean collettiva) {
-    // ----------- << method.body@AAAAAAF+h+SsyALFTmM= >>
-    // ----------- >>
-    }
+    
+    
+    
+    
     // ----------- << method.annotations@AAAAAAF+h+SsyALL5Xc= >>
+    /**
+     * metodo che va a richiamare il metodo del registro associato a cliente, in quanto si vuole che la funzione non svolga nulla ma faccia tutto la classe RegistroStrutture
+     * viene quindi implementato il pattern design DELEGATION
+     * 
+     * @param sport 
+     * @param dataora 
+     * @param struttura
+     * @return 
+     * 
+     * @return ritorna un oggetto Spogliatoio qualora tutte le condizioni indicate rispettino quelle dello Spogliatoio che viene ritornato
+     */
     // ----------- >>
-    protected void controlloDisponibilitaSpogliatoio() {
+    protected Spogliatoio controlloDisponibilitaSpogliatoio(Date dataora, Struttura struttura) {
     // ----------- << method.body@AAAAAAF+h+SsyALL5Xc= >>
+    	return registro.controlloDisponibilitaSpogliatoio(dataora, struttura);
     // ----------- >>
     	
     }
