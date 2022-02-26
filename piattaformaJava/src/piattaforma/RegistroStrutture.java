@@ -17,6 +17,7 @@ import java.time.*;
 // ----------- >>
 public class RegistroStrutture {
 	
+	//implementazione del design pattern SINGLETON
 	protected static RegistroStrutture registro;//l'unica istanza della classe
 	
 	
@@ -69,28 +70,140 @@ public class RegistroStrutture {
 
 
     // ----------- << method.annotations@AAAAAAF/Ae3NRlS2ang= >>
+    /**
+     * metodo per verificare se esiste una struttura che possiede una password come quella indicata
+     * @param password da controllare se esiste tra gli id delle stutture
+     * @return la struttura qualora il confronto sia positivo, nulla qualora invece non ci sia un confronto positivo
+     */
     // ----------- >>
-    protected void check() {
+    protected Struttura check(String password) {
     // ----------- << method.body@AAAAAAF/Ae3NRlS2ang= >>
+    	for(Struttura s: ListaStrutture) {
+    		if(s.getIDstruttura() == password) {
+    			return s;
+    		}
+    	}
+    	
+    	//da gestire con eccezione
+    	return null;
     // ----------- >>
     }
+    
+    
+    
+    /**
+     * Metodo che serve per ritornare un campo appartenente alla struttura indicata e che possa ospitare lo sport indicato all'ora stabilita.
+     * @param sport indica la tipologia del campo da prenotare
+     * @param dataora indica l'orario e la data di prenotazione
+     * @param struttura indica la struttura presso la quale si vorrebbe prenotare
+     * @return si ritorna il campo solo se non è occupato nella data indicata, si ritorna null qualora sia occupato
+     */
+    protected Campo controlloDisponibilitaCampo(String sport, Date dataora, Struttura struttura) {  	
+    	for(Struttura s: ListaStrutture) {
+    		if(s.equals(struttura)) {  			
+    			for(Campo c: s.getListaCampi()) {
+    				if(c.getSport() == sport) {
+    					
+    					boolean occupato = false; //variabile per verificare se esiste già una prenotazione nel campo c nell'ora indicata da dataora
+    					
+    					for(Prenotazione p: c.getListaPrenotazioni()) {
+    						if(p.getDataOra().equals(dataora)) {
+    							occupato = true;
+    							break;
+    						}
+    					}
+    					
+    					if(!occupato) {
+    						return c;
+    					}
+    				}
+    			}
+    		}
+    	}
     	
-    protected Campo controlloDisponibilitaCampo(String sport, Date dataora, Struttura struttura) {
-    	// scrito a caso
+    	//gestisci eccezione
     	return null;
     }
     
+    
+    /**
+     * Metodo che serve per ritornare uno spogliatoio appartenente alla struttura indicata e prenotabile all'ora stabilita.
+     * @param dataora indica l'orario e la data di prenotazione
+     * @param struttura indica la struttura presso la quale si vorrebbe prenotare
+     * @return si ritorna lo spogliatoio solo se non è occupato nella data indicata, si ritorna null qualora sia occupato
+     */
     protected Spogliatoio controlloDisponibilitaSpogliatoio(Date dataora, Struttura struttura) {
-    	//scritto a caso
+    	for(Struttura s: ListaStrutture) {
+    		if(s.equals(struttura)) {  			
+    			for(Spogliatoio sp: s.getListaSpogliatoi()) {
+    					
+	    			boolean occupato = false; //variabile per verificare se esiste già una prenotazione nel campo c nell'ora indicata da dataora
+	    					
+	    			for(Prenotazione p: sp.getListaPrenotazioni()) {
+	    				if(p.getDataOra().equals(dataora)) {
+	    					occupato = true;
+	    					break;
+	    				}
+	    			}
+	    					
+	    			if(!occupato) {
+	    				return sp;
+	    			}
+
+    			}
+    		}
+    	}
+    	
+    	//gestisci eccezione
     	return null;
     }
     
-    protected void confermaPrenotazione() {
+    
+    
+    /**
+     * metodo per confermare una prenotazione senza lo spogliatoio verificando che chi prenota non sia stato bannato dalla struttura
+     * @param dataora indica la data e l'ora della prenotazione
+     * @param sport indica lo sport che si praticherà
+     * @param cf indica il codice fiscale dell'utente che prenota
+     * @param struttura indica il centro sportivo presso cui si prenota
+     * @param campo indica il campo presso cui si vuole prenotare
+     * 
+     */
+    protected void confermaPrenotazioneNOSpogliatoio(Date dataora, String sport, String cf, Struttura struttura, Campo campo) {
+    	Prenotazione p = new Prenotazione(dataora, sport, cf, struttura, campo);
     	
+    	if(struttura.controllaBan(cf)) {
+    		//gestire eccezione
+    	}
+    	else{
+    		campo.linkListaPrenotazioni(p);
+    	}
+    	  	
     }
     
-    private int calcolaSconto() {
-    	return 0;
+
+    
+    /**
+     * metodo per confermare una prenotazione con lo spogliatoio verificando che chi prenota non sia stato bannato dalla struttura
+     * @param dataora indica la data e l'ora della prenotazione
+     * @param sport indica lo sport che si praticherà
+     * @param cf indica il codice fiscale dell'utente che prenota
+     * @param struttura indica il centro sportivo presso cui si prenota
+     * @param campo indica il campo presso cui si vuole prenotare
+     * @param spogliatoio indica lo spogliatoio presso cui si vuole prenotare
+     * 
+     */
+    protected void confermaPrenotazioneCONSpogliatoio(Date dataora, String sport, String cf, Struttura struttura, Campo campo, Spogliatoio spogliatoio) {
+    	Prenotazione p = new Prenotazione(dataora, sport, cf, struttura, campo, spogliatoio);
+    	
+    	if(struttura.controllaBan(cf)) {
+    		//gestire eccezione
+    	}
+    	else{
+    		campo.linkListaPrenotazioni(p);
+    		spogliatoio.linkListaPrenotazioni(p);
+    	}
+    	  	
     }
     
 // ----------- << class.extras@AAAAAAF+i5Bd8z8/cWo= >>
