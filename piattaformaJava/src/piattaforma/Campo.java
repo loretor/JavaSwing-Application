@@ -23,7 +23,7 @@ public abstract class Campo {
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALyBig= >>
     // ----------- >>
-    private String Sport;
+    protected String Sport;
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALz0Ew= >>
     // ----------- >>
@@ -31,7 +31,7 @@ public abstract class Campo {
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyAL0Eoo= >>
     // ----------- >>
-    private int nroMaxPersone;
+    protected int nroGiocatori;
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALRqvo= >>
     // ----------- >>
@@ -42,17 +42,18 @@ public abstract class Campo {
     private Struttura StrutturaProprietaria;
     
     
+    private RegistroStrutture registro;
     
     /*
      * costruttore di campo che non può essere richiamato se non dalle sottoclassi di Campo stesse
      */
-    public Campo(String sport, float prezzo, int nmaxpersone, Struttura strutturaproprietaria) {
-    	this.Sport = sport;
+    public Campo(float prezzo, Struttura strutturaproprietaria) {
     	this.Prezzo = prezzo;
-    	this.nroMaxPersone = nmaxpersone;
     	ListaPrenotazioni = new HashSet<>();
     	setStrutturaProprietaria(strutturaproprietaria);
     	setIDcampo();
+    	//questa variabile riprende l'unica possibile istanza di RegistroStrutture
+    	this.registro = RegistroStrutture.registro;
     }
 
     
@@ -72,8 +73,8 @@ public abstract class Campo {
         return Prezzo;
     }
 
-    public int getNroMaxPersone() {
-        return nroMaxPersone;
+    public int getnroGiocatori() {
+        return nroGiocatori;
     }
 
     public Set<Prenotazione> getListaPrenotazioni() {
@@ -88,21 +89,13 @@ public abstract class Campo {
      * serie di metodi per settare singolarmente gli attributi della classe
      */ 
     private void setIDcampo() {    	
-    	for(Struttura s: RegistroStrutture.getListaStrutture()) {
+    	for(Struttura s: registro.getListaStrutture()) {
     		if(s.equals(StrutturaProprietaria)) {
     			int n = StrutturaProprietaria.getListaCampi().size();
     	        this.IDcampo = "C_"+ (n+1);
     	        return;
     		}
     	}
-    }
-
-    public void setSport(String Sport) {
-        this.Sport = Sport;
-    }
-
-    public void setNroMaxPersone(int nroMaxPersone) {
-        this.nroMaxPersone = nroMaxPersone;
     }
 
     protected void setStrutturaProprietaria(Struttura StrutturaProprietaria) {
@@ -142,10 +135,15 @@ public abstract class Campo {
 
 
     // ----------- << method.annotations@AAAAAAF/G83rC8T6iE4= >>
+    /**
+	 * @return ritorno la lista delle prenotazioni associate al campo
+	 */
     // ----------- >>
-    public void stampaPrenotazione() {
+    public Set<Prenotazione> stampaPrenotazione() {
     // ----------- << method.body@AAAAAAF/G83rC8T6iE4= >>
-    // ----------- >>
+    	return this.ListaPrenotazioni;
+   // ----------- >>
+    	
     }
 // ----------- << class.extras@AAAAAAF+h+SsyALtH+M= >>
 // ----------- >>

@@ -19,21 +19,21 @@ public class CampoBasket extends Campo {
 	
 	// ----------- << attribute.annotations@AAAAAAF+h+SsyAMEkKE= >>
     // ----------- >>
-    private float altezzaCanestro;
-
-    // ----------- << attribute.annotations@AAAAAAF+h+SsyAMFK/M= >>
-    // ----------- >>
-    private int nroGiocatori;
+    private double altezzaCanestro;
+    
     
     /*
      * costruttore CampoBasket
      */
-    public CampoBasket(String sport, float prezzo, int nmaxpersone, Struttura strutturaproprietaria) {
-		super(sport, prezzo, nmaxpersone, strutturaproprietaria);
+    public CampoBasket(float prezzo,  Struttura strutturaproprietaria) {
+		super(prezzo, strutturaproprietaria);
 		// TODO Auto-generated constructor stub
+		Sport="Basket";
+		nroGiocatori=10;
+		altezzaCanestro=3.05;
 	}
 
-    public float getAltezzaCanestro() {
+    public double getAltezzaCanestro() {
         return altezzaCanestro;
     }
 
@@ -41,6 +41,9 @@ public class CampoBasket extends Campo {
         return nroGiocatori;
     }
 
+    public void setAltezzaCanestro(double h) {
+    	altezzaCanestro=h;
+    }
 // ----------- << class.extras@AAAAAAF+h+SsyAMCvEA= >>
 // ----------- >>
 }

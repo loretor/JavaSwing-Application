@@ -25,17 +25,18 @@ public class CampoCalcetto extends Campo {
     // ----------- >>
     private boolean campoCoperto;
 
-    // ----------- << attribute.annotations@AAAAAAF+h+SsyAMBsEg= >>
-    // ----------- >>
-    private int nroGiocatori;
     
     
     /*
      * costruttore CampoCalcetto
      */
-    public CampoCalcetto(String sport, float prezzo, int nmaxpersone, Struttura strutturaproprietaria) {
-		super(sport, prezzo, nmaxpersone, strutturaproprietaria);
+    public CampoCalcetto(float prezzo, Struttura strutturaproprietaria,String terreno, boolean campoCoperto) {
+		super(prezzo, strutturaproprietaria);
 		// TODO Auto-generated constructor stub
+		Sport="Calcetto";
+		nroGiocatori=10;
+		tipoTerreno=terreno;
+		this.campoCoperto=campoCoperto;
 	}
     
 

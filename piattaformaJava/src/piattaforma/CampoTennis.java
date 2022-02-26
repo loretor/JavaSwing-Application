@@ -20,18 +20,17 @@ public class CampoTennis extends Campo {
 	// ----------- << attribute.annotations@AAAAAAF+h+SsyAMIpFY= >>
     // ----------- >>
     private String tipoTerreno;
-
-    // ----------- << attribute.annotations@AAAAAAF+h+SsyAMJ7xY= >>
-    // ----------- >>
-    private int nroGiocatori;
     
     
     /*
      * costruttore CampoTennis
      */
-    public CampoTennis(String sport, float prezzo, int nmaxpersone, Struttura strutturaproprietaria) {
-		super(sport, prezzo, nmaxpersone, strutturaproprietaria);
+    public CampoTennis(float prezzo, Struttura strutturaproprietaria, String terreno) {
+		super(prezzo, strutturaproprietaria);
 		// TODO Auto-generated constructor stub
+		Sport="Tennis";
+		nroGiocatori=2;
+		tipoTerreno=terreno;
 	}
     
     
