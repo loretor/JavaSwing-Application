@@ -33,9 +33,12 @@ public class CampoCalcetto extends Campo {
     /*
      * costruttore CampoCalcetto
      */
-    public CampoCalcetto(String sport, float prezzo, int nmaxpersone, Struttura strutturaproprietaria) {
-		super(sport, prezzo, nmaxpersone, strutturaproprietaria);
+    public CampoCalcetto(float prezzo, Struttura strutturaproprietaria,String terreno) {
+		super(prezzo, strutturaproprietaria);
 		// TODO Auto-generated constructor stub
+		Sport="Calcetto";
+		nroGiocatori=10;
+		tipoTerreno=terreno;
 	}
     
 

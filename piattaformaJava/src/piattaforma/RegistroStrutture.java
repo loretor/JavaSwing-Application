@@ -45,7 +45,7 @@ public class RegistroStrutture {
     
     
     
-    public static Set<Struttura> getListaStrutture() {
+    public Set<Struttura> getListaStrutture() {
         return ListaStrutture;
     }
 
