@@ -6,8 +6,8 @@
 package piattaforma;
 
 import java.util.*;
+import java.util.Map.*;
 import java.time.*;
-
 
 
 // ----------- << imports@AAAAAAF+h+SsyALPzog= >>
@@ -16,6 +16,7 @@ import java.time.*;
 // ----------- << class.annotations@AAAAAAF+h+SsyALPzog= >>
 // ----------- >>
 public class Prenotazione {
+	public static int contPrenotazioni=0;
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALaojI= >>
     // ----------- >>
     private Date DataOra;
@@ -52,6 +53,22 @@ public class Prenotazione {
     // ----------- >>
     private Spogliatoio SpogliatoioAssociato;
 
+   
+    
+    /*
+     * costrutture della classe
+     */
+    public Prenotazione(Date data, String sport, boolean docce, String cf, Struttura struttura, Campo campo, Spogliatoio spogliatoio ) {
+		// TODO Auto-generated constructor stub
+    	DataOra=data;
+    	Sport=sport;
+    	Spogliatoio=docce;
+    	CodiceFiscalePrenotante=cf;
+    	NomeStruttura=struttura;
+    	linkCampoAssociato(campo);
+    	linkSpogliatoioAssociato(spogliatoio);
+    	
+	}
     
     /*
      * serie di get per ottenere gli attributi della classe
@@ -99,9 +116,10 @@ public class Prenotazione {
         this.DataOra = DataOra;
     }
 
-    //forse è da togliere perchè il codice viene generato in automatico
-    protected void setCodicePrenotazione(String CodicePrenotazione) {
-        this.CodicePrenotazione = CodicePrenotazione;
+    
+    protected void setCodicePrenotazione() {
+    	contPrenotazioni+=1;
+        CodicePrenotazione ="P_"+contPrenotazioni;
     }
 
     public void setSport(String Sport) {
@@ -110,10 +128,6 @@ public class Prenotazione {
 
     public void setSpogliatoio(boolean Spogliatoio) {
         this.Spogliatoio = Spogliatoio;
-    }
-
-    public void setPrezzo(float Prezzo) {
-        this.Prezzo = Prezzo;
     }
 
     public void setCodiceFiscalePrenotante(String CodiceFiscalePrenotante) {
@@ -170,6 +184,23 @@ public class Prenotazione {
     // ----------- >>
     protected void calcolaPrezzo() {
     // ----------- << method.body@AAAAAAF+h+SsyALhZdw= >>
+    	float costoPrenotazione=CampoAssociato.getPrezzo();
+    	
+    	if(Spogliatoio) {
+    		costoPrenotazione+=SpogliatoioAssociato.getPrezzo();
+    	}
+    	
+    	Map<String,Integer> lista = NomeStruttura.getConteggioPrenotazioni();
+    	Iterator<Entry<String,Integer>> it= lista.entrySet().iterator();
+    	
+    	while(it.hasNext()) {
+    		Map.Entry<String,Integer> set= (Map.Entry<String,Integer>) it.next();
+    		if(set.getKey()==CodiceFiscalePrenotante && set.getValue()>=5) {
+    			costoPrenotazione*=0.8;//sconto 20 %
+    			return;
+    		}
+    	}
+    	
     // ----------- >>
     }
 // ----------- << class.extras@AAAAAAF+h+SsyALPzog= >>

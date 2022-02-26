@@ -34,7 +34,7 @@ public class Struttura {
 
     // ----------- << attribute.annotations@AAAAAAF/G/HPwGbFGOw= >>
     // ----------- >>
-    private HashMap<Cliente, Integer> ConteggioPrenotazioni;
+    private HashMap<String, Integer> ConteggioPrenotazioni;
 
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALlXF8= >>
     // ----------- >>
@@ -67,7 +67,7 @@ public class Struttura {
         return IDstruttura;
     }
 
-    private HashMap<Cliente, Integer> getConteggioPrenotazioni() {
+    protected HashMap<String, Integer> getConteggioPrenotazioni() {
         return ConteggioPrenotazioni;
     }
 
