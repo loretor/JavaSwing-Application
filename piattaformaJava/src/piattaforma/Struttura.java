@@ -50,7 +50,7 @@ public class Struttura {
     // ----------- >>
     private Set<Spogliatoio> ListaSpogliatoi;
     
-    private RegistroStrutture registro;
+    private RegistroStrutture registro; 
 
     
     /*
@@ -59,6 +59,7 @@ public class Struttura {
     
     public Struttura(String nome, String indirizzo, String citta) {
 		// TODO Auto-generated constructor stub
+    	contaStruttura++;
     	Nome=nome;
     	Indirizzo=indirizzo;
     	Citta=citta;
@@ -121,8 +122,7 @@ public class Struttura {
     }
 
     private void setIDstruttura() {
-       contaStruttura+=1;
-       IDstruttura="Struttura_"+contaStruttura;
+     IDstruttura="Struttura_"+contaStruttura;
     }
 
     /*

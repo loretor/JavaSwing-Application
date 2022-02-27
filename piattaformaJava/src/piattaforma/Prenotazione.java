@@ -16,7 +16,7 @@ import java.time.*;
 // ----------- << class.annotations@AAAAAAF+h+SsyALPzog= >>
 // ----------- >>
 public class Prenotazione {
-	public static int contPrenotazioni=0;
+	private static int contPrenotazioni=0;
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALaojI= >>
     // ----------- >>
     private LocalDateTime DataOra;
@@ -52,14 +52,14 @@ public class Prenotazione {
     // ----------- << attribute.annotations@AAAAAAF+h+SsyALVPUU= >>
     // ----------- >>
     private Spogliatoio SpogliatoioAssociato;
-
-   
+       
     
     /*
      * costrutture della classe con Spogliatoio
      */
     public Prenotazione(LocalDateTime data, String sport, String cf, Struttura struttura, Campo campo, Spogliatoio spogliatoio ) {
 		// TODO Auto-generated constructor stub
+    	contPrenotazioni++;
     	DataOra=data;
     	Sport=sport;
     	Spogliatoio=true;
@@ -76,6 +76,7 @@ public class Prenotazione {
      */
     public Prenotazione(LocalDateTime data, String sport, String cf, Struttura struttura, Campo campo) {
 		// TODO Auto-generated constructor stub
+    	contPrenotazioni++;
     	DataOra=data;
     	Sport=sport;
     	Spogliatoio=false;
@@ -94,7 +95,7 @@ public class Prenotazione {
     }
 
     protected String getCodicePrenotazione() {
-        return CodicePrenotazione;
+       return CodicePrenotazione;
     }
 
     public String getSport() {
@@ -134,7 +135,6 @@ public class Prenotazione {
 
     
     protected void setCodicePrenotazione() {
-    	contPrenotazioni +=1;
         CodicePrenotazione ="P_"+contPrenotazioni;
     }
 
