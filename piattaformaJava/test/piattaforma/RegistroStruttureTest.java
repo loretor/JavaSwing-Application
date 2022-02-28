@@ -12,8 +12,8 @@ import org.junit.Test;
 public class RegistroStruttureTest {
 
 	
-	@Test
-	public void TestGenerale() {
+	@Test(expected=Throwable.class)
+	public void TestGenerale() throws Exception {
 		RegistroStrutture r = RegistroStrutture.getInstance();
 		Struttura s =new Struttura("CSS","via Asiago","Stezzano");
 		Struttura s2 =new Struttura("CSS2","via Asiago","Stezzano");
@@ -56,7 +56,8 @@ public class RegistroStruttureTest {
 		//test di controllodisponibilit‡Campo()
 		Prenotazione p =new Prenotazione(d,"Basket","TSRALS04S16A787",s,campo);//senza spogliatoio
 		
-		assertEquals(r.controlloDisponibilitaCampo("Basket",d,s),null); //campo gi‡ occupato
+		//assertEquals(r.controlloDisponibilitaCampo("Basket",d,s),null); //campo gi‡ occupato
+		r.controlloDisponibilitaCampo("Basket",d,s);
 		
 		LocalDateTime d2 = LocalDateTime.of(2023,12,10, 11, 36);
 		assertEquals(r.controlloDisponibilitaCampo("Basket",d2,s), campo); //campo libero
@@ -66,7 +67,7 @@ public class RegistroStruttureTest {
 		LocalDateTime d3 = LocalDateTime.of(2024,12,10, 11, 36);
 		Prenotazione p1 =new Prenotazione(d3,"Basket","TSRALS04S16A787",s,campo,sp);//senza spogliatoio
 		
-		assertEquals(r.controlloDisponibilitaSpogliatoio(d3,s),null); //spogliatoio gi‡ occupato
+		r.controlloDisponibilitaSpogliatoio(d3,s); //spogliatoio gi‡ occupato
 		
 		assertEquals(r.controlloDisponibilitaSpogliatoio(d2,s), sp);  //spogliatoio libero
 		

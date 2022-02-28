@@ -136,7 +136,7 @@ public class PrenotazioneTest {
 
 	//RICONTROLLA
 	@Test
-	public void testCalcolaPrezzo() {
+	public void testCalcolaPrezzo() throws Exception {
 		RegistroStrutture r= RegistroStrutture.getInstance();
 		r.linkListaStrutture(s);
 		

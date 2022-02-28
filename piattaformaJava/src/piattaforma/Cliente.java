@@ -92,14 +92,20 @@ public class Cliente {
      * @param struttura
      * 
      * @return ritorna un oggetto Campo qualora tutte le condizioni indicate rispettino quelle del campo che viene ritornato
+     * @throws Exception 
      */
     // ----------- >>
-    protected Campo controlloDisponibilitaCampo(String sport, LocalDateTime dataora, Struttura struttura) {
+    protected Campo controlloDisponibilitaCampo(String sport, LocalDateTime dataora, Struttura struttura) throws Exception {
     // ----------- << method.body@AAAAAAF+h+SsyALFTmM= >>
+    	if(sport.isBlank() || dataora.isEqual(null) || struttura==null)
+    	{
+    		throw new Exception("c'è una preferenza non settata");
+    	}
+    	else
     	return registro.controlloDisponibilitaCampo(sport, dataora, struttura);
     // ----------- >>
     }
-    
+  
     
     
     
@@ -115,10 +121,16 @@ public class Cliente {
      * @return 
      * 
      * @return ritorna un oggetto Spogliatoio qualora tutte le condizioni indicate rispettino quelle dello Spogliatoio che viene ritornato
+     * @throws Exception 
      */
     // ----------- >>
-    protected Spogliatoio controlloDisponibilitaSpogliatoio(LocalDateTime dataora, Struttura struttura) {
+    protected Spogliatoio controlloDisponibilitaSpogliatoio(LocalDateTime dataora, Struttura struttura) throws Exception {
     // ----------- << method.body@AAAAAAF+h+SsyALL5Xc= >>
+    	if(dataora.isEqual(null) || struttura==null)
+    	{
+    		throw new Exception("c'è una preferenza non settata");
+    	}
+    	else
     	return registro.controlloDisponibilitaSpogliatoio(dataora, struttura);
     // ----------- >>
     	
@@ -127,3 +139,4 @@ public class Cliente {
 // ----------- << class.extras@AAAAAAF+h+SsyALA1XA= >>
 // ----------- >>
 }
+

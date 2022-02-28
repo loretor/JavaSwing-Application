@@ -74,9 +74,10 @@ public class RegistroStrutture {
      * metodo per verificare se esiste una struttura che possiede una password come quella indicata
      * @param password da controllare se esiste tra gli id delle stutture
      * @return la struttura qualora il confronto sia positivo, nulla qualora invece non ci sia un confronto positivo
+     * @throws Exception 
      */
     // ----------- >>
-    protected Struttura check(String password) {
+    protected Struttura check(String password) throws Exception {
     // ----------- << method.body@AAAAAAF/Ae3NRlS2ang= >>
     	for(Struttura s: ListaStrutture) {
     		if(s.getIDstruttura().compareTo(password) == 0) {
@@ -84,8 +85,7 @@ public class RegistroStrutture {
     		}
     	}
     	
-    	//da gestire con eccezione
-    	return null;
+    	throw new Exception("pasword non esistente");
     // ----------- >>
     }
     
@@ -97,8 +97,9 @@ public class RegistroStrutture {
      * @param d indica l'orario e la data di prenotazione
      * @param struttura indica la struttura presso la quale si vorrebbe prenotare
      * @return si ritorna il campo solo se non è occupato nella data indicata, si ritorna null qualora sia occupato
+     * @throws Exception 
      */
-    protected Campo controlloDisponibilitaCampo(String sport, LocalDateTime d, Struttura struttura) {  	
+    protected Campo controlloDisponibilitaCampo(String sport, LocalDateTime d, Struttura struttura) throws Exception {  	
     	for(Struttura s: ListaStrutture) {
     		if(s.equals(struttura)) {  			
     			for(Campo c: s.getListaCampi()) {
@@ -121,8 +122,8 @@ public class RegistroStrutture {
     		}
     	}
     	
-    	//gestisci eccezione
-    	return null;
+    	//eccezione
+    	throw new Exception("non esistono campi liberi con questi criteri di ricerca");
     }
     
     
@@ -131,8 +132,9 @@ public class RegistroStrutture {
      * @param dataora indica l'orario e la data di prenotazione
      * @param struttura indica la struttura presso la quale si vorrebbe prenotare
      * @return si ritorna lo spogliatoio solo se non è occupato nella data indicata, si ritorna null qualora sia occupato
+     * @throws Exception 
      */
-    protected Spogliatoio controlloDisponibilitaSpogliatoio(LocalDateTime dataora, Struttura struttura) {
+    protected Spogliatoio controlloDisponibilitaSpogliatoio(LocalDateTime dataora, Struttura struttura) throws Exception {
     	for(Struttura s: ListaStrutture) {
     		if(s.equals(struttura)) {  			
     			for(Spogliatoio sp: s.getListaSpogliatoi()) {
@@ -154,8 +156,8 @@ public class RegistroStrutture {
     		}
     	}
     	
-    	//gestisci eccezione
-    	return null;
+    	//eccezione
+    	throw new Exception("non esistono spogliatoi liberi con questi criteri di ricerca");
     }
     
     
@@ -167,11 +169,13 @@ public class RegistroStrutture {
      * @param cf indica il codice fiscale dell'utente che prenota
      * @param struttura indica il centro sportivo presso cui si prenota
      * @param campo indica il campo presso cui si vuole prenotare
+     * @throws Exception 
      * 
      */
-    protected void confermaPrenotazioneNOSpogliatoio(LocalDateTime dataora, String sport, String cf, Struttura struttura, Campo campo) {    	
+    protected void confermaPrenotazioneNOSpogliatoio(LocalDateTime dataora, String sport, String cf, Struttura struttura, Campo campo) throws Exception {    	
     	if(struttura.controllaBan(cf)) {
-    		//gestire eccezione
+    		//eccezione
+    		throw new Exception("non puoi prenotare perchè sei bannato");
     	}
     	else{
     		Prenotazione p = new Prenotazione(dataora, sport, cf, struttura, campo);
@@ -192,11 +196,13 @@ public class RegistroStrutture {
      * @param struttura indica il centro sportivo presso cui si prenota
      * @param campo indica il campo presso cui si vuole prenotare
      * @param spogliatoio indica lo spogliatoio presso cui si vuole prenotare
+     * @throws Exception 
      * 
      */
-    protected void confermaPrenotazioneCONSpogliatoio(LocalDateTime dataora, String sport, String cf, Struttura struttura, Campo campo, Spogliatoio spogliatoio) {    	  	
+    protected void confermaPrenotazioneCONSpogliatoio(LocalDateTime dataora, String sport, String cf, Struttura struttura, Campo campo, Spogliatoio spogliatoio) throws Exception {    	  	
     	if(struttura.controllaBan(cf)) {
-    		//gestire eccezione
+    		// eccezione
+    		throw new Exception("non puoi prenotare perchè sei bannato");
     	}
     	else{
     		Prenotazione p = new Prenotazione(dataora, sport, cf, struttura, campo, spogliatoio);

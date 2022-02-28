@@ -126,8 +126,14 @@ public class Struttura {
     /*
      * aggiunge un nuovo cliente alla ListaBan
      */
-    public void linkListaClientiBan(Cliente cliente) {
+    public void linkListaClientiBan(Cliente cliente) throws Exception {
         if (cliente != null) {
+        	for(Cliente c: ListaClientiBan)
+        	{
+        		if(c.getCodiceFiscale().compareTo(cliente.CodiceFiscale)==0)
+        			throw new Exception("ban già inserito");
+        	}
+        		
             getListaClientiBan().add(cliente);
         }
     }

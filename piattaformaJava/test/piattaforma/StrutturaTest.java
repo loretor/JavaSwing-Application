@@ -66,7 +66,7 @@ public class StrutturaTest {
 	}
 
 	@Test
-	public void testGetListaClientiBan() {
+	public void testGetListaClientiBan() throws Exception {
 		Set<Cliente> lista= new HashSet<>();
 		lista.add(c);
 		s.linkListaClientiBan(c);
@@ -111,7 +111,7 @@ public class StrutturaTest {
 	}
 
 	@Test
-	public void testLinkListaClientiBan() {
+	public void testLinkListaClientiBan() throws Exception {
 		s.linkListaClientiBan(c);
 		s.linkListaClientiBan(c2);
 
@@ -143,7 +143,7 @@ public class StrutturaTest {
 	}
 
 	@Test
-	public void testUnlinkListaClientiBan() {
+	public void testUnlinkListaClientiBan() throws Exception {
 		Set<Cliente> lista= new HashSet<>();
 		lista.add(c2);
 		
@@ -199,7 +199,7 @@ public class StrutturaTest {
 	}
 
 	@Test
-	public void testControllaBan() {
+	public void testControllaBan() throws Exception {
 		s.linkListaClientiBan(c);
 		
 		assertTrue(s.controllaBan(c.getCodiceFiscale()));
