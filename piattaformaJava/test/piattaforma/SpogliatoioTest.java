@@ -33,6 +33,7 @@ public class SpogliatoioTest {
 		Prenotazione p =new Prenotazione(d,"Basket","TSRALS04S16A787",s,campo,sp);
 		lista.add(p);
 		sp.linkListaPrenotazioni(p);
+		
 		assertEquals(sp.getListaPrenotazioni(), lista);
 	}
 
@@ -45,6 +46,7 @@ public class SpogliatoioTest {
 	public void testSetStrutturaProprietaria() {
 		Struttura s2 =new Struttura("campiSport","via Puccini", "Bergamo");
 		sp.setStrutturaProprietaria(s2);
+		
 		assertEquals(sp.getStrutturaProprietaria(), s2);
 	}
 
@@ -54,14 +56,20 @@ public class SpogliatoioTest {
 		CampoBasket campo= new CampoBasket((float)100,s);
 		Prenotazione p =new Prenotazione(d,"Basket","TSRALS04S16A787",s,campo,sp);
 		sp.linkListaPrenotazioni(p);
-		int n = sp.getListaPrenotazioni().size();
-		assertEquals(n,1);
+		
+		Set<Prenotazione> lista= new HashSet<>();
+		lista.add(p);
+
+		assertEquals(sp.getListaPrenotazioni(), lista);
+
+
 	}
 
 	@Test
 	public void testLinkStrutturaProprietaria() {
 		Struttura s2 =new Struttura("campiSport","via Puccini", "Bergamo");
 		sp.linkStrutturaProprietaria(s2);
+		
 		assertEquals(sp.getStrutturaProprietaria(),s2);
 	}
 
@@ -70,10 +78,16 @@ public class SpogliatoioTest {
 		LocalDateTime d= LocalDateTime.of(2022,12,10, 11, 36);
 		CampoBasket campo= new CampoBasket((float)100,s);
 		Prenotazione p =new Prenotazione(d,"Basket","TSRALS04S16A787",s,campo,sp);
+		Prenotazione p2 =new Prenotazione(d,"Basket","TSRALS04S16A797",s,campo,sp);
 		sp.linkListaPrenotazioni(p);
+		sp.linkListaPrenotazioni(p2);
+		
 		sp.unlinkListaPrenotazioni(p);
-		int n = sp.getListaPrenotazioni().size();
-		assertEquals(n,0);
+		
+		Set<Prenotazione> lista= new HashSet<>();
+		lista.add(p2);
+
+		assertEquals(sp.getListaPrenotazioni(), lista);
 	}
 
 	/*
