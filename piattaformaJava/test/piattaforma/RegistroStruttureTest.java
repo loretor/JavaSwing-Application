@@ -95,6 +95,8 @@ public class RegistroStruttureTest {
 		
 		
 		//il test non viene replicato per confermaprenotazioneNOspogliatoio() perchè identico
+		
+		
 	}
 	
 
