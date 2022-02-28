@@ -210,7 +210,7 @@ public class Prenotazione {
     	
     	while(it.hasNext()) {
     		Map.Entry<String,Integer> set= (Map.Entry<String,Integer>) it.next();
-    		if(set.getKey()==CodiceFiscalePrenotante && set.getValue()>=5) {
+    		if(set.getKey().compareTo(CodiceFiscalePrenotante) == 0 && set.getValue()>=5) {
     			costoPrenotazione*=0.8;//sconto 20 %
     			return;
     		}

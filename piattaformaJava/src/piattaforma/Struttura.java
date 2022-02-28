@@ -50,7 +50,6 @@ public class Struttura {
     // ----------- >>
     private Set<Spogliatoio> ListaSpogliatoi;
     
-    private RegistroStrutture registro; 
 
     
     /*
@@ -63,7 +62,6 @@ public class Struttura {
     	Nome=nome;
     	Indirizzo=indirizzo;
     	Citta=citta;
-    	this.registro=RegistroStrutture.registro;
     	ListaClientiBan= new HashSet<>();
     	ListaCampi= new HashSet<>();
     	ListaSpogliatoi= new HashSet<>();
@@ -215,7 +213,7 @@ public class Struttura {
     protected boolean controllaBan(String cf) {
     // ----------- << method.body@AAAAAAF/Aept5Ez0NzU= >>
     	for(Cliente c : ListaClientiBan) {
-    		if(c.getCodiceFiscale()==cf) {
+    		if(c.getCodiceFiscale().compareTo(cf) == 0) {
     			return true;
     		}
     	}
@@ -235,7 +233,7 @@ public class Struttura {
     	
     	while(it.hasNext()) {
     		Map.Entry<String,Integer> set= (Map.Entry<String,Integer>) it.next();
-    		if(set.getKey()==cf) {
+    		if(set.getKey().compareTo(cf) == 0) {
     			int n=set.getValue(); //salva il numero di prenotazioni fatte dal cliente fino ad ora
     			ConteggioPrenotazioni.remove(cf);
     			ConteggioPrenotazioni.put(cf, (n+1));

@@ -79,7 +79,7 @@ public class RegistroStrutture {
     protected Struttura check(String password) {
     // ----------- << method.body@AAAAAAF/Ae3NRlS2ang= >>
     	for(Struttura s: ListaStrutture) {
-    		if(s.getIDstruttura() == password) {
+    		if(s.getIDstruttura().compareTo(password) == 0) {
     			return s;
     		}
     	}
@@ -102,7 +102,7 @@ public class RegistroStrutture {
     	for(Struttura s: ListaStrutture) {
     		if(s.equals(struttura)) {  			
     			for(Campo c: s.getListaCampi()) {
-    				if(c.getSport() == sport) {
+    				if(c.getSport().compareTo(sport) == 0) {
     					
     					boolean occupato = false; //variabile per verificare se esiste già una prenotazione nel campo c nell'ora indicata da dataora
     					

@@ -74,7 +74,6 @@ public class Spogliatoio {
     protected void setIDSpogliatoio() {    	
 		int n = StrutturaProprietaria.getListaSpogliatoi().size();
 		this.IDspogliatoio = "S_"+ n;
-		return;
     }
 
     public void setStrutturaProprietaria(Struttura StrutturaProprietaria) {
