@@ -29,7 +29,7 @@ public class RegistroStrutture {
     /*
      * costruttore di RegistroStrutture reso protected perchè può essere istanziato solo con il metodo getIstance per Pattern Singleton
      */
-    protected RegistroStrutture() {
+    private RegistroStrutture() {
     	ListaStrutture = new HashSet<>();
     }
 
@@ -177,6 +177,7 @@ public class RegistroStrutture {
     	}
     	else{
     		campo.linkListaPrenotazioni(p);
+    		struttura.aggiornaConteggioPrenotazioni(cf);
     	}
     	  	
     }
@@ -202,6 +203,7 @@ public class RegistroStrutture {
     	else{
     		campo.linkListaPrenotazioni(p);
     		spogliatoio.linkListaPrenotazioni(p);
+    		struttura.aggiornaConteggioPrenotazioni(cf);
     	}
     	  	
     }
