@@ -61,8 +61,6 @@ public class SpogliatoioTest {
 		lista.add(p);
 
 		assertEquals(sp.getListaPrenotazioni(), lista);
-
-
 	}
 
 	@Test

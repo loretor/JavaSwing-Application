@@ -152,22 +152,21 @@ public class PrenotazioneTest {
 		assertEquals(p11.getPrezzo(), (float) 200, 0);
 	
 		LocalDateTime d1 = LocalDateTime.of(2022,1,10, 11, 36);
-		Prenotazione p21 =new Prenotazione(d1,"Basket","TSRALS04S16A786",s,campo,sp);
-		r.confermaPrenotazioneCONSpogliatoio(d1,"Basket","TSRALS04S16A786",s,campo,sp);
-		Prenotazione p22 =new Prenotazione(d1,"Basket","TSRALS04S16A786",s,campo,sp);
+		Prenotazione p21 =new Prenotazione(d1,"Basket","TSRALS04S16A997",s,campo,sp);
 		r.confermaPrenotazioneCONSpogliatoio(d1,"Basket","TSRALS04S16A997",s,campo,sp);
-		Prenotazione p23 =new Prenotazione(d1,"Basket","TSRALS04S16A786",s,campo,sp);
-		r.confermaPrenotazioneCONSpogliatoio(d1,"Basket","TSRALS04S16A786",s,campo,sp);
-		Prenotazione p24 =new Prenotazione(d1,"Basket","TSRALS04S16A786",s,campo,sp);
-		r.confermaPrenotazioneCONSpogliatoio(d1,"Basket","TSRALS04S16A786",s,campo,sp);
-		Prenotazione p25 =new Prenotazione(d1,"Basket","TSRALS04S16A786",s,campo,sp);
-		r.confermaPrenotazioneCONSpogliatoio(d1,"Basket","TSRALS04S16A786",s,campo,sp);
-		Prenotazione p26 =new Prenotazione(d1,"Basket","TSRALS04S16A786",s,campo,sp);
-		r.confermaPrenotazioneCONSpogliatoio(d1,"Basket","TSRALS04S16A786",s,campo,sp);
+		Prenotazione p22 =new Prenotazione(d1,"Basket","TSRALS04S16A997",s,campo,sp);
+		r.confermaPrenotazioneCONSpogliatoio(d1,"Basket","TSRALS04S16A997",s,campo,sp);
+		Prenotazione p23 =new Prenotazione(d1,"Basket","TSRALS04S16A997",s,campo,sp);
+		r.confermaPrenotazioneCONSpogliatoio(d1,"Basket","TSRALS04S16A997",s,campo,sp);
+		Prenotazione p24 =new Prenotazione(d1,"Basket","TSRALS04S16A997",s,campo,sp);
+		r.confermaPrenotazioneCONSpogliatoio(d1,"Basket","TSRALS04S16A997",s,campo,sp);
+		Prenotazione p25 =new Prenotazione(d1,"Basket","TSRALS04S16A997",s,campo,sp);
+		r.confermaPrenotazioneCONSpogliatoio(d1,"Basket","TSRALS04S16A997",s,campo,sp);
+
 			
 		//costo cliente con sconto
-		assertEquals(p25.getPrezzo(), (float) 200, 0);//no sconto
-		assertEquals(p26.getPrezzo(), (float) 160, 0);//sconto
+		assertEquals(p24.getPrezzo(), (float) 200, 0);//no sconto perchè è la quinta
+		assertEquals(p25.getPrezzo(), (float) 160, 0);//sconto perchè è la sesta
 		
 	}
 

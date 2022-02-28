@@ -94,11 +94,11 @@ public class RegistroStrutture {
     /**
      * Metodo che serve per ritornare un campo appartenente alla struttura indicata e che possa ospitare lo sport indicato all'ora stabilita.
      * @param sport indica la tipologia del campo da prenotare
-     * @param dataora indica l'orario e la data di prenotazione
+     * @param d indica l'orario e la data di prenotazione
      * @param struttura indica la struttura presso la quale si vorrebbe prenotare
      * @return si ritorna il campo solo se non è occupato nella data indicata, si ritorna null qualora sia occupato
      */
-    protected Campo controlloDisponibilitaCampo(String sport, Date dataora, Struttura struttura) {  	
+    protected Campo controlloDisponibilitaCampo(String sport, LocalDateTime d, Struttura struttura) {  	
     	for(Struttura s: ListaStrutture) {
     		if(s.equals(struttura)) {  			
     			for(Campo c: s.getListaCampi()) {
@@ -107,7 +107,7 @@ public class RegistroStrutture {
     					boolean occupato = false; //variabile per verificare se esiste già una prenotazione nel campo c nell'ora indicata da dataora
     					
     					for(Prenotazione p: c.getListaPrenotazioni()) {
-    						if(p.getDataOra().equals(dataora)) {
+    						if(p.getDataOra().equals(d)) {
     							occupato = true;
     							break;
     						}
@@ -132,7 +132,7 @@ public class RegistroStrutture {
      * @param struttura indica la struttura presso la quale si vorrebbe prenotare
      * @return si ritorna lo spogliatoio solo se non è occupato nella data indicata, si ritorna null qualora sia occupato
      */
-    protected Spogliatoio controlloDisponibilitaSpogliatoio(Date dataora, Struttura struttura) {
+    protected Spogliatoio controlloDisponibilitaSpogliatoio(LocalDateTime dataora, Struttura struttura) {
     	for(Struttura s: ListaStrutture) {
     		if(s.equals(struttura)) {  			
     			for(Spogliatoio sp: s.getListaSpogliatoi()) {
@@ -169,13 +169,13 @@ public class RegistroStrutture {
      * @param campo indica il campo presso cui si vuole prenotare
      * 
      */
-    protected void confermaPrenotazioneNOSpogliatoio(LocalDateTime dataora, String sport, String cf, Struttura struttura, Campo campo) {
-    	Prenotazione p = new Prenotazione(dataora, sport, cf, struttura, campo);
-    	
+    protected void confermaPrenotazioneNOSpogliatoio(LocalDateTime dataora, String sport, String cf, Struttura struttura, Campo campo) {    	
     	if(struttura.controllaBan(cf)) {
     		//gestire eccezione
     	}
     	else{
+    		Prenotazione p = new Prenotazione(dataora, sport, cf, struttura, campo);
+    		
     		campo.linkListaPrenotazioni(p);
     		struttura.aggiornaConteggioPrenotazioni(cf);
     	}
@@ -194,13 +194,13 @@ public class RegistroStrutture {
      * @param spogliatoio indica lo spogliatoio presso cui si vuole prenotare
      * 
      */
-    protected void confermaPrenotazioneCONSpogliatoio(LocalDateTime dataora, String sport, String cf, Struttura struttura, Campo campo, Spogliatoio spogliatoio) {
-    	Prenotazione p = new Prenotazione(dataora, sport, cf, struttura, campo, spogliatoio);
-    	
+    protected void confermaPrenotazioneCONSpogliatoio(LocalDateTime dataora, String sport, String cf, Struttura struttura, Campo campo, Spogliatoio spogliatoio) {    	  	
     	if(struttura.controllaBan(cf)) {
     		//gestire eccezione
     	}
     	else{
+    		Prenotazione p = new Prenotazione(dataora, sport, cf, struttura, campo, spogliatoio);
+    		
     		campo.linkListaPrenotazioni(p);
     		spogliatoio.linkListaPrenotazioni(p);
     		struttura.aggiornaConteggioPrenotazioni(cf);

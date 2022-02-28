@@ -94,7 +94,7 @@ public class Cliente {
      * @return ritorna un oggetto Campo qualora tutte le condizioni indicate rispettino quelle del campo che viene ritornato
      */
     // ----------- >>
-    protected Campo controlloDisponibilitaCampo(String sport, Date dataora, Struttura struttura) {
+    protected Campo controlloDisponibilitaCampo(String sport, LocalDateTime dataora, Struttura struttura) {
     // ----------- << method.body@AAAAAAF+h+SsyALFTmM= >>
     	return registro.controlloDisponibilitaCampo(sport, dataora, struttura);
     // ----------- >>
@@ -117,7 +117,7 @@ public class Cliente {
      * @return ritorna un oggetto Spogliatoio qualora tutte le condizioni indicate rispettino quelle dello Spogliatoio che viene ritornato
      */
     // ----------- >>
-    protected Spogliatoio controlloDisponibilitaSpogliatoio(Date dataora, Struttura struttura) {
+    protected Spogliatoio controlloDisponibilitaSpogliatoio(LocalDateTime dataora, Struttura struttura) {
     // ----------- << method.body@AAAAAAF+h+SsyALL5Xc= >>
     	return registro.controlloDisponibilitaSpogliatoio(dataora, struttura);
     // ----------- >>
