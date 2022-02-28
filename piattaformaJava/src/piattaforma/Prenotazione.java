@@ -190,6 +190,7 @@ public class Prenotazione {
         if (getSpogliatoioAssociato() != null) {
             getSpogliatoioAssociato().getListaPrenotazioni().remove(this);
             setSpogliatoioAssociato(null);
+            Spogliatoio=false;
         }
     }
 

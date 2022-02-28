@@ -122,7 +122,7 @@ public class Struttura {
     }
 
     private void setIDstruttura() {
-     IDstruttura="Struttura_"+contaStruttura;
+    	IDstruttura="Struttura_"+contaStruttura;
     }
 
     /*
