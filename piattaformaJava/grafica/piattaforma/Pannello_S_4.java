@@ -14,7 +14,9 @@ import javax.swing.*;
  */
 public class Pannello_S_4 extends PannelloGeneraleStruttura{
 
-	JTextField field;
+	JTextField field_nome;
+	JTextField field_cognome;
+	JTextField field_cf;
 	JButton submit;
 	
 	
@@ -61,16 +63,38 @@ public class Pannello_S_4 extends PannelloGeneraleStruttura{
 		titolo3.setFont(new Font("Baskerville", Font.PLAIN, 20));
 		titolo3.setBounds(240,300,800,25);
 		
+		JLabel descrizione3 = new JLabel();
+		descrizione3.setText("Nome:");
+		descrizione3.setForeground(new Color(0x8E8D8A));
+		descrizione3.setHorizontalTextPosition(JLabel.RIGHT);
+		descrizione3.setFont(new Font("Baskerville", Font.PLAIN, 17));
+		descrizione3.setBounds(240,350,200,25);
+		
+		JLabel descrizione4 = new JLabel();
+		descrizione4.setText("Cognome:");
+		descrizione4.setForeground(new Color(0x8E8D8A));
+		descrizione4.setHorizontalTextPosition(JLabel.RIGHT);
+		descrizione4.setFont(new Font("Baskerville", Font.PLAIN, 17));
+		descrizione4.setBounds(240,380,200,25);
+		
 		JLabel descrizione2 = new JLabel();
 		descrizione2.setText("Codice Fiscale:");
 		descrizione2.setForeground(new Color(0x8E8D8A));
 		descrizione2.setHorizontalTextPosition(JLabel.RIGHT);
 		descrizione2.setFont(new Font("Baskerville", Font.PLAIN, 17));
-		descrizione2.setBounds(240,350,200,25);
+		descrizione2.setBounds(240,410,200,25);
 		
-		field = new JTextField("");
-		field.setFont(new Font("Baskerville", Font.PLAIN, 17));
-		field.setBounds(390,350,300,30);
+		field_nome = new JTextField("");
+		field_nome.setFont(new Font("Baskerville", Font.PLAIN, 17));
+		field_nome.setBounds(390,350,300,30);
+		
+		field_cognome = new JTextField("");
+		field_cognome.setFont(new Font("Baskerville", Font.PLAIN, 17));
+		field_cognome.setBounds(390,380,300,30);
+		
+		field_cf = new JTextField("");
+		field_cf.setFont(new Font("Baskerville", Font.PLAIN, 17));
+		field_cf.setBounds(390,410,300,30);
 		
 		submit = new JButton("Submit");
 		submit.setFont(new Font("Baskerville", Font.BOLD, 10));
@@ -85,7 +109,11 @@ public class Pannello_S_4 extends PannelloGeneraleStruttura{
 		this.add(titolo3);
 		this.add(descrizione1);
 		this.add(descrizione2);
-		this.add(field);
+		this.add(descrizione3);
+		this.add(descrizione4);
+		this.add(field_nome);
+		this.add(field_cognome);
+		this.add(field_cf);
 		this.add(submit);
 	}
 	
@@ -95,23 +123,42 @@ public class Pannello_S_4 extends PannelloGeneraleStruttura{
 		
 		
 		if(e.getSource() == submit) {
-			String cf = field.getText();
+			String nome = field_nome.getText();
+			String cognome = field_cognome.getText();
+			String cf = field_cf.getText();
 			
 			//caso in cui l'utente non abbia scritto un codice
-			if(cf.length() == 0) {
-				JOptionPane.showMessageDialog(null, "Devi inserire un Codice Fiscale prima di premere submit", "Errore Creazione Ban", JOptionPane.ERROR_MESSAGE);
+			if(nome.length() == 0 | cognome.length() == 0| cf.length() == 0) {
+				JOptionPane.showMessageDialog(null, "Devi settare correttamente tutti i campi prima di confermare", "Errore Creazione Ban", JOptionPane.ERROR_MESSAGE);
+				return;
 			}
-			//else if (cf non è corretto come codice fiscale) non so se implementeremo questo controllo
-			//in questo caso faremmo un display di un messaggio di errore
 			else {
-				int ans = JOptionPane.showConfirmDialog(null, "Confermi il ban? Una volta aggiunto non sarà più possibile eliminarlo", "Conferma Creazione Ban", JOptionPane.WARNING_MESSAGE);
 				
-				if(ans == 0) {
-					//implementare il metodo per aggiungere il cf alla lista dei ban di questa struttura
-					field.setText("");
-					//ricreiamo il pannello del menu con i campi aggionati, da fare in futuro
-					cl.show(container, "S_2");
+				Cliente c = new Cliente(nome, cognome, cf);
+				
+				//eccezione qualora il cf inserito sia già presente nella lista dei ban della struttura
+				try {
+					privata.linkListaClientiBan(c);
+				} catch (Exception e2) {
+					// TODO: handle exception
+					JOptionPane.showMessageDialog(null, "Ban già presente per questo Utente", "Errore Creazione Ban", JOptionPane.ERROR_MESSAGE);
+					return;
 				}
+				
+				//int ans = JOptionPane.showConfirmDialog(null, "Confermi il ban? Una volta aggiunto non sarà più possibile eliminarlo", "Conferma Creazione Ban", JOptionPane.WARNING_MESSAGE);
+				
+				//if(ans == 0) {
+
+					
+					field_nome.setText("");
+					field_cognome.setText("");
+					field_cf.setText("");
+					
+					Pannello_S_2 panel_S_2 = new Pannello_S_2();
+					container.add(panel_S_2, "S_2");
+					
+					cl.show(container, "S_2");
+				//}
 			}
 		}
 	}

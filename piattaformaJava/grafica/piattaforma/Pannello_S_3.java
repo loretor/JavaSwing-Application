@@ -227,11 +227,13 @@ public class Pannello_S_3 extends PannelloGeneraleStruttura{
 			}
 			//caso invece in cui abbia selezionato o ci sia già qualcosa di selezionato
 			else {
+				
+				//controllo per verificare se nel caso di calcio e tennis sia stato settato tutto
 				switch(valorerisposta)
 				{
 				case 0:
 					terreno1=(String)comboterreno.getSelectedItem();
-					if(terreno1.isEmpty()) {
+					if(terreno1 == null) {
 						JOptionPane.showMessageDialog(null, "Devi scegliere il tipo di terreno per i campo da tennis", "Errore Set", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
@@ -240,7 +242,7 @@ public class Pannello_S_3 extends PannelloGeneraleStruttura{
 				case 1:
 					terreno2=(String)comboterreno2.getSelectedItem();
 					coperto=boxcoperto.isSelected();
-					if(terreno2.isEmpty()) {
+					if(terreno2 == null) {
 						JOptionPane.showMessageDialog(null, "Devi scegliere il tipo di terreno per i campo da calcetto", "Errore Set", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
