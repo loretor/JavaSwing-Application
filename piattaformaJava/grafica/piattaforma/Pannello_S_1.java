@@ -57,6 +57,7 @@ public class Pannello_S_1 extends PannelloGenerale{
 		
 		field = new JTextField("Password");
 		field.setFont(new Font("Baskerville", Font.PLAIN, 17));
+		field.setForeground(new Color(0x8E8D8A));
 		field.setBounds(540,350,140,30);
 		
 		JLabel password = new JLabel();

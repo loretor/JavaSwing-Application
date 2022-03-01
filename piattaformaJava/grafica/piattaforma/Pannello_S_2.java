@@ -79,22 +79,38 @@ public class Pannello_S_2 extends PannelloGeneraleStruttura{
 		descrizione3.setFont(new Font("Baskerville", Font.PLAIN, 17));
 		descrizione3.setBounds(250,310,900,25);
 		
+		int nroCalcetto=0, nroTennis=0, nroBasket=0;
+		for(Campo c : privata.getListaCampi()) {
+			switch (c.getSport())
+			{
+			case "Calcetto":
+				nroCalcetto++;
+				break;
+			case "Basket":
+				nroBasket++;
+				break;
+			case "Tennis":
+				nroTennis++;
+				break;
+			}
+		}
+		
 		JLabel descrizione4 = new JLabel();
-		descrizione4.setText("Numero Campi Calcetto: "+privata.getListaCampi().size());
+		descrizione4.setText("Numero Campi Calcetto: "+nroCalcetto);
 		descrizione4.setForeground(new Color(0x8E8D8A));
 		descrizione4.setHorizontalTextPosition(JLabel.RIGHT);
 		descrizione4.setFont(new Font("Baskerville", Font.PLAIN, 17));
 		descrizione4.setBounds(250,400,300,25);
 		
 		JLabel descrizione5 = new JLabel();
-		descrizione5.setText("Numero Campi Tennis: ");
+		descrizione5.setText("Numero Campi Tennis: "+nroTennis);
 		descrizione5.setForeground(new Color(0x8E8D8A));
 		descrizione5.setHorizontalTextPosition(JLabel.RIGHT);
 		descrizione5.setFont(new Font("Baskerville", Font.PLAIN, 17));
 		descrizione5.setBounds(250,430,300,25);
 		
 		JLabel descrizione6 = new JLabel();
-		descrizione6.setText("Numero Campi Basket: ");
+		descrizione6.setText("Numero Campi Basket: "+nroBasket);
 		descrizione6.setForeground(new Color(0x8E8D8A));
 		descrizione6.setHorizontalTextPosition(JLabel.RIGHT);
 		descrizione6.setFont(new Font("Baskerville", Font.PLAIN, 17));
