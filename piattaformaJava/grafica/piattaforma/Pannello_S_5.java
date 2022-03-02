@@ -3,6 +3,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.swing.*;
 
@@ -18,6 +20,7 @@ public class Pannello_S_5 extends PannelloGeneraleStruttura{
 	
 	JComboBox<String> combocampi;
 	JButton submit;
+	Set<String> lista=new HashSet<>();
 	
 	/*
 	 * questa variabile viene settata nel costruttore e contiene il nome della struttura di cui si sta visualizzando l'area
@@ -66,8 +69,14 @@ public class Pannello_S_5 extends PannelloGeneraleStruttura{
 		/*
 		 * Qua ci sarà bisongo di un metodo che richiama una classe del progetto che mi restituisce tutte le strutture, per ora metto una lista di Stringhe
 		 */
-		String[] lista = {"campo tennis", "campo tennis 1", "spogliatoio 1"};
-		combocampi = new JComboBox<String>(lista);
+		for(Campo c : privata.getListaCampi()) {
+			lista.add(c.getIDcampo() +" "+ "("+c.getSport()+")");
+		}
+		for(Spogliatoio sp : privata.getListaSpogliatoi()) {
+			lista.add(sp.getIDspogliatoio());
+		}
+		String[] lista_string= lista.toArray(new String[lista.size()]);
+		combocampi = new JComboBox<String>(lista_string);
 		combocampi.setBounds(240,250,200,25);
 		combocampi.setBackground(new Color(0xEAE7DC));
 		combocampi.addActionListener(this);
@@ -101,7 +110,7 @@ public class Pannello_S_5 extends PannelloGeneraleStruttura{
 				JOptionPane.showMessageDialog(null, "Devi scegliere un campo o spogliatoio prima di premere submit", "Errore Ricerca", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				Pannello_S_6 panel_S_6 = new Pannello_S_6(privata.getNome(), campo);
+				Pannello_S_6 panel_S_6 = new Pannello_S_6(campo);
 				container.add(panel_S_6, "S_6");
 				cl.show(container, "S_6");
 			}

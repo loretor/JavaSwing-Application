@@ -1,6 +1,7 @@
 package piattaforma;
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDateTime;
 
 
 /**
@@ -123,6 +124,16 @@ public class MainFrame{
 		registro.linkListaStrutture(s5);
 		CampoCalcetto cc5 = new CampoCalcetto(45, s5, "Sintetico", true);
 		CampoCalcetto cc6 = new CampoCalcetto(35, s5, "Sintetico", false);
+		
+		LocalDateTime d1 = LocalDateTime.of(2022,12,10, 11, 06);
+		LocalDateTime d2 = LocalDateTime.of(2022,12,11, 10, 36);
+		LocalDateTime d3 = LocalDateTime.of(2022,2,04, 18, 30);
+		LocalDateTime d4 = LocalDateTime.of(2022,12,15, 19, 00);
+		LocalDateTime d5 = LocalDateTime.of(2022,12,10, 20, 00);
+		
+		Prenotazione p1=new Prenotazione(d1,"Calcetto", "TRRLNZ00S16A794D", s1, cc1);
+		Prenotazione p2=new Prenotazione(d2,"Calcetto", "CRMMTT00E12A794G", s1, cc1);
+		Prenotazione p3=new Prenotazione(d5,"Calcetto", "CRMMTT00E12A794G", s1, ct1);
 	}
 
 }

@@ -1,5 +1,7 @@
 package piattaforma;
 import java.awt.*;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -21,9 +23,9 @@ public class Pannello_S_6 extends PannelloGeneraleStruttura{
 	 * che istanzia questo
 	 */
 	String nomericerca;
-	String nomestruttura;
+	Set<Prenotazione> lista_prenotazioni = new HashSet<>();
 	
-	public Pannello_S_6(String struttura, String nomecampo) {
+	public Pannello_S_6(String nomecampo) {
 		super();
 		
 		this.setLayout(null);
@@ -31,8 +33,7 @@ public class Pannello_S_6 extends PannelloGeneraleStruttura{
 		/*
 		 * Da questo punto inzia la customizzazione vera e propria del pannello
 		 */
-		nomericerca = nomecampo;
-		nomestruttura = struttura;
+		nomericerca = nomecampo.split(" ")[0];
 		
 		JLabel titolo = new JLabel();
 		titolo.setText("Prenotazioni "+nomericerca);
@@ -41,12 +42,24 @@ public class Pannello_S_6 extends PannelloGeneraleStruttura{
 		titolo.setFont(new Font("Baskerville", Font.PLAIN, 35));
 		titolo.setBounds(240,90,800,50);
 		
-		//bisogna avere il metodo che restituisce la lista di prenotazioni associate a quel campo di quella struttura
-		//per ora metto solo una lista a caso
-		//bisognerà andare quindi a creare anche dei pannelli che contengano le informazioni per ogni prenotazione
-		String [] listaprenota = {"TRRLNZ00S16A794D", "CRDNDR03G12A765E","GDRPLO01D25F654E","CRDNDR03G12A765E"};
-		String [] listaorario = {"09:00","20:00","21:00","17:00"};
-		String [] listagiorni = {"14/02/2022", "15/02/2022","18/02/2022","20/02/2022"};
+		if((nomericerca.split("")[0]).compareTo("C") == 0){//campo
+			for(Campo c:privata.getListaCampi()) {
+				if(c.getIDcampo().compareTo(nomericerca)==0) {
+					lista_prenotazioni=c.getListaPrenotazioni();
+					break;
+				}
+			}
+		}
+		else{//spogiatoio
+			for(Spogliatoio c:privata.getListaSpogliatoi()) {
+				if(c.getIDspogliatoio().compareTo(nomericerca)==0) {
+					lista_prenotazioni=c.getListaPrenotazioni();
+					break;
+				}
+			}
+		}
+		
+		
 		
 		//questo elemento serve come contenitore per tutte le prenotazioni associate a quel campo o spogliatoio
 		JPanel contenitoreprenotazioni = new JPanel();
@@ -60,7 +73,7 @@ public class Pannello_S_6 extends PannelloGeneraleStruttura{
 		scrollable.setBounds(240,200,765,450);
 		
 		//ciclo che va a creare tutte le prenotazioni trovate con la lista
-		for(int i = 0; i < listaprenota.length; i++) {
+		for(Prenotazione p: lista_prenotazioni) {
 			//pannello è un contenitore che rappresenta una prenotazione, è lui che viene aggiunto al contenitore.
 			//tutte le caratteristiche della prenotazione vengono invece aggiunte al pannello stesso
 			JPanel pannello = new JPanel();
@@ -69,21 +82,21 @@ public class Pannello_S_6 extends PannelloGeneraleStruttura{
 			pannello.setBackground(new Color(0xD8C3A5));
 			
 			JLabel cf = new JLabel();
-			cf.setText("Codice Fiscale prenotante: "+listaprenota[i]);
+			cf.setText("Codice Fiscale prenotante: "+p.getCodiceFiscalePrenotante());
 			cf.setForeground(new Color(0x8E8D8A));
 			cf.setHorizontalTextPosition(JLabel.RIGHT);
 			cf.setFont(new Font("Baskerville", Font.PLAIN, 25));
 			cf.setBounds(20,20,800,25);
 			
 			JLabel data = new JLabel();
-			data.setText("Data: "+listagiorni[i]);
+			data.setText("Data: "+(p.getDataOra().toString()).split("T")[0]);
 			data.setForeground(new Color(0x8E8D8A));
 			data.setHorizontalTextPosition(JLabel.RIGHT);
 			data.setFont(new Font("Baskerville", Font.PLAIN, 17));
 			data.setBounds(20,50,800,25);
 			
 			JLabel orario = new JLabel();
-			orario.setText("Orario: "+listaorario[i]);
+			orario.setText("Orario: "+(p.getDataOra().toString()).split("T")[1]);
 			orario.setForeground(new Color(0x8E8D8A));
 			orario.setHorizontalTextPosition(JLabel.RIGHT);
 			orario.setFont(new Font("Baskerville", Font.PLAIN, 17));
