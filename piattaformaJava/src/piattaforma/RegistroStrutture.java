@@ -85,7 +85,7 @@ public class RegistroStrutture {
     		}
     	}
     	
-    	throw new Exception("pasword non esistente");
+    	throw new Exception("password non esistente");
     // ----------- >>
     }
     
@@ -108,7 +108,7 @@ public class RegistroStrutture {
     					boolean occupato = false; //variabile per verificare se esiste già una prenotazione nel campo c nell'ora indicata da dataora
     					
     					for(Prenotazione p: c.getListaPrenotazioni()) {
-    						if(p.getDataOra().equals(d)) {
+    						if(p.getDataOra().compareTo(d)== 0) {
     							occupato = true;
     							break;
     						}
@@ -119,11 +119,13 @@ public class RegistroStrutture {
     					}
     				}
     			}
+    			//eccezione
+    	    	throw new Exception("non esistono campi liberi con questi criteri di ricerca");
     		}
     	}
     	
-    	//eccezione
-    	throw new Exception("non esistono campi liberi con questi criteri di ricerca");
+    	return null;
+    	
     }
     
     

@@ -2,7 +2,9 @@ package piattaforma;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.swing.*;
 
@@ -26,6 +28,8 @@ public class Pannello_U_1 extends PannelloGenerale{
 	JRadioButton no_spogliatoio;
 	JButton submit;
 	
+
+	
 	
 	/*
 	 * variabili che assumono i valori espressi dalle preferenze dell'utente, dovranno poi essere passate all'applicativo vero e propio per 
@@ -35,7 +39,8 @@ public class Pannello_U_1 extends PannelloGenerale{
 	String struttura = new String("default");
 	String orario = new String("default");
 	boolean spogliatoio;
-	
+	JTextField field;
+
 	
 	public Pannello_U_1() {
 		super(); //si richiama super per dare al pannello le caratteristiche di JPanel e i settaggi generali
@@ -103,19 +108,27 @@ public class Pannello_U_1 extends PannelloGenerale{
 		descrizione2.setFont(new Font("Baskerville", Font.BOLD, 17));
 		descrizione2.setBounds(315,300,300,25);
 		
+		
+		JLabel descrizione5 = new JLabel();
+		descrizione5.setText("Scelta Data (gg-mm-aaaa)");
+		descrizione5.setForeground(new Color(0x8E8D8A));
+		descrizione5.setHorizontalTextPosition(JLabel.RIGHT);
+		descrizione5.setFont(new Font("Baskerville", Font.BOLD, 17));
+		descrizione5.setBounds(630,300,300,25);
+		
 		JLabel descrizione3 = new JLabel();
 		descrizione3.setText("Scelta Orario");
 		descrizione3.setForeground(new Color(0x8E8D8A));
 		descrizione3.setHorizontalTextPosition(JLabel.RIGHT);
 		descrizione3.setFont(new Font("Baskerville", Font.BOLD, 17));
-		descrizione3.setBounds(630,300,300,25);
+		descrizione3.setBounds(630,380,300,25);
 		
 		JLabel descrizione4 = new JLabel();
 		descrizione4.setText("Spogliatoio?");
 		descrizione4.setForeground(new Color(0x8E8D8A));
 		descrizione4.setHorizontalTextPosition(JLabel.RIGHT);
 		descrizione4.setFont(new Font("Baskerville", Font.BOLD, 17));
-		descrizione4.setBounds(855,300,300,25);
+		descrizione4.setBounds(875,300,300,25);
 		
 		
 		//variabile per raggruppare tennis basket e calcetto dato che vogliamo che solo uno di questi possa essere scelto
@@ -146,16 +159,26 @@ public class Pannello_U_1 extends PannelloGenerale{
 		/*
 		 * Qua ci sarà bisongo di un metodo che richiama una classe del progetto che mi restituisce tutte le strutture, per ora metto una lista di Stringhe
 		 */
-		String[] lista = {"Campi Sportivi Stezzano", "Piscine Stezzano", "Campo sportivo Levate"};
-		combostrutture = new JComboBox<String>(lista);
+		Set<Struttura>lista =RegistroStrutture.getInstance().getListaStrutture();
+		Set<String>lista_strutture = new HashSet<String>();
+		for(Struttura s : lista) {
+			lista_strutture.add(s.getNome());
+		}
+		String[] lista_string= lista_strutture.toArray(new String[lista_strutture.size()]);
+		combostrutture = new JComboBox<String>(lista_string);
 		combostrutture.setBounds(315,330,200,25);
 		combostrutture.setBackground(new Color(0xEAE7DC));
 		combostrutture.addActionListener(this);
 		combostrutture.setSelectedIndex(-1);
 		
+		field = new JTextField("");
+		field.setFont(new Font("Baskerville", Font.PLAIN, 17));
+		field.setForeground(new Color(0x8E8D8A));
+		field.setBounds(630,330,140,30);
+		
 		String[] listaorari = {"09:00", "10:00", "11:00","16:00","17:00","18:00","19:00","20:00","21:00"};
 		comboorari = new JComboBox<String>(listaorari);
-		comboorari.setBounds(630,330,90,25);
+		comboorari.setBounds(630,410,90,25);
 		comboorari.setBackground(new Color(0xEAE7DC));
 		comboorari.addActionListener(this);
 		comboorari.setSelectedIndex(-1);
@@ -164,14 +187,14 @@ public class Pannello_U_1 extends PannelloGenerale{
 		ButtonGroup group1 = new ButtonGroup();
 		
 		si_spogliatoio = new JRadioButton("Sì");
-		si_spogliatoio.setBounds(855,330,300,25);
+		si_spogliatoio.setBounds(875,330,300,25);
 		si_spogliatoio.setBackground(new Color(0xEAE7DC));
 		si_spogliatoio.setFont(new Font("Baskerville", Font.BOLD, 13));
 		si_spogliatoio.addActionListener(this);
 		group1.add(si_spogliatoio);
 		
 		no_spogliatoio = new JRadioButton("No");
-		no_spogliatoio.setBounds(855,360,300,25);
+		no_spogliatoio.setBounds(875,360,300,25);
 		no_spogliatoio.setBackground(new Color(0xEAE7DC));
 		no_spogliatoio.setFont(new Font("Baskerville", Font.BOLD, 13));
 		no_spogliatoio.addActionListener(this);
@@ -202,7 +225,9 @@ public class Pannello_U_1 extends PannelloGenerale{
 		this.add(descrizione2);
 		this.add(descrizione3);
 		this.add(descrizione4);
+		this.add(descrizione5);
 		this.add(submit);
+		this.add(field);
 	}
 	
 	@Override
@@ -243,15 +268,30 @@ public class Pannello_U_1 extends PannelloGenerale{
 				orario = "";
 			}
 			
+			String stringa_data=field.getText();
+			LocalDateTime d;
+			
+			try {
+				d= LocalDateTime.of(Integer.valueOf(stringa_data.split("-")[2]),Integer.valueOf(stringa_data.split("-")[1]),Integer.valueOf(stringa_data.split("-")[0]),
+						Integer.valueOf(orario.split(":")[0]),Integer.valueOf(orario.split(":")[1]));
+				if(d.compareTo(LocalDateTime.now())<=0) {
+					JOptionPane.showMessageDialog(null, "Devi mettere una data futura", "Errore Settaggio", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+			} catch (Exception e2) {
+				// TODO: handle exception
+				JOptionPane.showMessageDialog(null, "Errore nel settaggio della data", "Errore Settaggio", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 			//controlli per verificare che tutto sia corretto
-			if(sport.length() == 0 | struttura.length() == 0 | orario.length() == 0) {
+			if(sport == null | struttura == null | orario == null) {
 				JOptionPane.showMessageDialog(null, "Campi non settati correttamente", "Errore Settaggio", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 				//bisogna creare ogni volta il pannello U_2 perchè è dinamico
 				//implementare la funzione di ricerca qua o nel pannello U_2
 				
-				Pannello_U_2 panel_U_2 = new Pannello_U_2(sport, struttura, orario, spogliatoio);
+				Pannello_U_2 panel_U_2 = new Pannello_U_2(sport, struttura, d, spogliatoio);
 				container.add(panel_U_2, "U_2");
 				cl.show(container,"U_2");
 			}

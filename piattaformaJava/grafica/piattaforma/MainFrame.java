@@ -34,6 +34,10 @@ public class MainFrame{
 	 * Se non è presente U/S significa che il pannello è in comune ad entrambi gli attori.
 	 */
 	public MainFrame() {
+		
+		//richiamiamo la funzione per poter settare tutte le classe principali di src
+		SettaggioDatabase();
+		
 		JFrame frame = new JFrame();
 		ImageIcon logo = new ImageIcon("grafica/logo.jpg");
 		
@@ -61,8 +65,6 @@ public class MainFrame{
 		
 		frame.add(container);
 
-		//richiamiamo la funzione per poter settare tutte le classe principali di src
-		SettaggioDatabase();
 		
 		//settaggio frame
 		frame.setIconImage(logo.getImage());	

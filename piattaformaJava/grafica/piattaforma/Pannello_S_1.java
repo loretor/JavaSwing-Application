@@ -55,7 +55,7 @@ public class Pannello_S_1 extends PannelloGenerale{
 		descrizione2.setBounds(90,250,900,25);
 		
 		
-		field = new JTextField("Password");
+		field = new JTextField("");
 		field.setFont(new Font("Baskerville", Font.PLAIN, 17));
 		field.setForeground(new Color(0x8E8D8A));
 		field.setBounds(540,350,140,30);
@@ -96,10 +96,13 @@ public class Pannello_S_1 extends PannelloGenerale{
 			field.setText("Password");
 			
 			RegistroStrutture registro = RegistroStrutture.getInstance();
+			System.out.println(RegistroStrutture.getInstance().getListaStrutture());
 
 			//controllo esistenza struttura in registro con id = password
 			try {
 				PannelloGeneraleStruttura.privata = registro.check(valorepassword);
+				
+				
 				
 				Pannello_S_2 panel_S_2 = new Pannello_S_2();
 				container.add(panel_S_2, "S_2");
