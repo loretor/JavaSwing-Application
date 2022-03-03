@@ -1,10 +1,14 @@
 package piattaforma;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.time.LocalDateTime;
 
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  * Classe che rappresenta il primo pannello nell'ambiente dedicato alla struttura. 
@@ -20,22 +24,19 @@ public class Pannello_U_2 extends PannelloGenerale{
 	LocalDateTime orario;
 	boolean spogliatoio;
 	
+	
+	JButton submit;
+	
 	/*
 	 * il costruttore deve creare un pannello sulla base dei possibili risultati della ricerca
 	 * - CASO 1: richiesta di solo campo prenotabile all'orario stabilito per quella struttura
 	 * 	Display della prenotazione con bottone da premere
-	 * - CASO 2: richiesta di solo campo NON prenotabile all'orario stabilito per quella struttura
-	 * 	Display messaggio di errore, con proposte di altri orari o date per cui quella struttura è disponibile
-	 * - CASO 3: richiesta di campo e spogliatoio prenotabile all'orario stabilito per quella struttura
+	 * - CASO 2: richiesta di campo e spogliatoio prenotabile all'orario stabilito per quella struttura
 	 * 	situazione uguale a CASO1
-	 * - CASO 4: richiesta di campo e spogliatoio, ma con spogliatio NON prenotabile all'orario stabilito per quella struttura
+	 * - CASO 3: richiesta di campo e spogliatoio, ma con spogliatio NON prenotabile all'orario stabilito per quella struttura
 	 * 	Display di una richiesta per prenotare comunque il campo senza lo spogliatoio
-	 * - CASO 5: richiesta di campo e spogliatoio, ma con campo NON prenotabile all'orario stabilito per quella struttura
-	 * 	Abbiamo deciso per fare un display di un messaggio di errore perchè non avrebbe senso prenotare solo lo spogliatoio senza campo
-	 * - CASO 6: richiesta di campo e spogliatoio, ma con campo e spogliatoio NON prenotabile all'orario stabilito per quella struttura
-	 * 	situazione uguale a CASO2?
 	 */
-	public Pannello_U_2(String sport, String strut, LocalDateTime orario, boolean spogliatoio) {
+	public Pannello_U_2(String sport, Struttura strut, LocalDateTime orario, boolean spogliatoio) {
 		super(); //si richiama super per dare al pannello le caratteristiche di JPanel e i settaggi generali
 		
 		//settiamo il Layout che utilizzeremo per questo pannello
@@ -46,39 +47,38 @@ public class Pannello_U_2 extends PannelloGenerale{
 		 * Da questo punto inzia la customizzazione vera e propria del pannello
 		 */	
 		this.sport=sport;
-		for(Struttura s: RegistroStrutture.getInstance().getListaStrutture()) {
-			if(s.getNome().compareTo(strut) == 0) {
-				this.struttura=s;
-				break;
-			}
-		}
+		this.struttura = strut;
 		this.orario=orario;
 		this.spogliatoio=spogliatoio;
 		
-		JLabel titolo = new JLabel();;
 		
 		if(!spogliatoio) {
-			try {
-				//CASO1
-				Campo c=RegistroStrutture.getInstance().controlloDisponibilitaCampo(sport, orario, struttura);
-				
-				titolo.setText("Risultati ricerca");
-				titolo.setForeground(new Color(0xE98074));
-				titolo.setHorizontalTextPosition(JLabel.RIGHT);
-				titolo.setFont(new Font("Baskerville", Font.PLAIN, 35));
-				titolo.setBounds(50,80,800,50);
-				
-			} catch (Exception e) {
-				// TODO: handle exception
-				//CASO2
-				JOptionPane.showMessageDialog(null, "Campo non disponibile nell'orario richiesto", "Errore Ricerca", JOptionPane.ERROR_MESSAGE);
-				}
+			//CASO 1
+			
+			JLabel titolo1 = new JLabel();
+			titolo1.setText("La tua ricerca ha avuto esito POSITIVO");
+			titolo1.setForeground(new Color(0x8E8D8A));
+			titolo1.setHorizontalTextPosition(JLabel.RIGHT);
+			titolo1.setFont(new Font("Baskerville", Font.PLAIN, 20));
+			titolo1.setBounds(50,130,800,25);
+			
+			
+			
+			
+			submit = new JButton("Submit");
+			submit.setFont(new Font("Baskerville", Font.BOLD, 10));
+			submit.setBounds(490,550,100,30);
+			submit.setBackground(new Color(0xD8C3A5));
+			submit.setBorder(BorderFactory.createLineBorder(new Color(0xE98074),1));
+			submit.addActionListener(this);
+			
+			this.add(titolo1);
+			this.add(submit);
+			
 		}
 		else {
-			//if(ricercacampoOK && ricercaspogliatoiOK) --CASO3
-			//if(ricercacampoOK && ricercaspogliatoiNOTOK) --CASO4
-			//if(ricercacampoNOTOK && ricercaspogliatoiOK) --CASO5 
-			//if(ricercacampoNOTOK && ricercaspogliatoiNOTOK) --CASO6
+			//CASO 2
+			//CASO 3
 		}
 		
 		
@@ -166,6 +166,6 @@ public class Pannello_U_2 extends PannelloGenerale{
 		}
 		*/
 		
-		this.add(titolo);
+		
 	}
 }

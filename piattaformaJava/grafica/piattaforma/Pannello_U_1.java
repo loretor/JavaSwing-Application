@@ -35,9 +35,9 @@ public class Pannello_U_1 extends PannelloGenerale{
 	 * variabili che assumono i valori espressi dalle preferenze dell'utente, dovranno poi essere passate all'applicativo vero e propio per 
 	 * fare le varie ricerche
 	 */
-	String sport = new String("default");
-	String struttura = new String("default");
-	String orario = new String("default");
+	String sport = new String();
+	String struttura = new String();
+	String orario = new String();
 	boolean spogliatoio;
 	JTextField field;
 
@@ -236,13 +236,13 @@ public class Pannello_U_1 extends PannelloGenerale{
 		
 		//inzio bottoni tipici del pannello
 		if(e.getSource() == tennis) {
-			sport ="tennis";
+			sport ="Tennis";
 		}
 		else if(e.getSource() == calcetto) {
-			sport = "calcetto";
+			sport = "Calcetto";
 		}
 		else if(e.getSource() == basket) {
-			sport = "basket";
+			sport = "Basket";
 		}
 		else if(e.getSource() == combostrutture) {
 			struttura = (String) combostrutture.getSelectedItem();
@@ -259,39 +259,72 @@ public class Pannello_U_1 extends PannelloGenerale{
 		//pressione pulsante di submit
 		else if(e.getSource() == submit){
 			
-			//queste operazioni sono da fare perchè se il selected item è -1 allora struttura viene imposta = null e non
-			//si riescono a fare le operazioni dopo
-			if(combostrutture.getSelectedIndex() == -1) {
-				struttura = "";
-			}
-			if(comboorari.getSelectedIndex() == -1) {
-				orario = "";
-			}
-			
-			String stringa_data=field.getText();
+	
+			String stringa_data = field.getText();
 			LocalDateTime d;
 			
-			try {
-				d= LocalDateTime.of(Integer.valueOf(stringa_data.split("-")[2]),Integer.valueOf(stringa_data.split("-")[1]),Integer.valueOf(stringa_data.split("-")[0]),
-						Integer.valueOf(orario.split(":")[0]),Integer.valueOf(orario.split(":")[1]));
-				if(d.compareTo(LocalDateTime.now())<=0) {
-					JOptionPane.showMessageDialog(null, "Devi mettere una data futura", "Errore Settaggio", JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-			} catch (Exception e2) {
-				// TODO: handle exception
-				JOptionPane.showMessageDialog(null, "Errore nel settaggio della data", "Errore Settaggio", JOptionPane.ERROR_MESSAGE);
-				return;
-			}
+					
 			//controlli per verificare che tutto sia corretto
 			if(sport == null | struttura == null | orario == null) {
 				JOptionPane.showMessageDialog(null, "Campi non settati correttamente", "Errore Settaggio", JOptionPane.ERROR_MESSAGE);
+				return;
 			}
 			else {
-				//bisogna creare ogni volta il pannello U_2 perchè è dinamico
-				//implementare la funzione di ricerca qua o nel pannello U_2
 				
-				Pannello_U_2 panel_U_2 = new Pannello_U_2(sport, struttura, d, spogliatoio);
+				//controlli legati alla data
+				try {
+					d = LocalDateTime.of(Integer.valueOf(stringa_data.split("-")[2]),Integer.valueOf(stringa_data.split("-")[1]),Integer.valueOf(stringa_data.split("-")[0]),Integer.valueOf(orario.split(":")[0]),Integer.valueOf(orario.split(":")[1]));
+					if(d.compareTo(LocalDateTime.now())<=0) {
+						JOptionPane.showMessageDialog(null, "Devi mettere una data futura", "Errore Settaggio", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+				} catch (Exception e2) {
+					// TODO: handle exception
+					JOptionPane.showMessageDialog(null, "Errore nel settaggio della data", "Errore Settaggio", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				
+				//troviamo la struttura con il nome settato dall'utente
+				Struttura s1 = null;
+				
+				for(Struttura s: RegistroStrutture.getInstance().getListaStrutture()) {
+					if(s.getNome().compareTo(struttura) == 0) {
+						s1 = s;
+						break;
+					}
+				}
+				
+				
+				try {					
+					//controllo se esiste un campo dello sport specificato nella struttura indicata
+					boolean esistecamposport = false;
+					
+					for(Campo c: s1.getListaCampi()) {
+						if(c.getSport().compareTo(sport) == 0) {
+							esistecamposport = true;
+						}
+					}
+					
+					if(!esistecamposport) {
+						JOptionPane.showMessageDialog(null, "Non esiste un campo di "+sport+" in questa struttura", "Errore Ricerca", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+					
+					
+					//controlliamo se è possibile prenotare un campo della struttura all'orario definito
+					Campo c = RegistroStrutture.getInstance().controlloDisponibilitaCampo(sport, d, s1);
+					
+					
+					
+				} catch (Exception e1) {
+					// TODO: handle exception
+					JOptionPane.showMessageDialog(null, "Campo non disponibile nell'orario richiesto", "Errore Ricerca", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				//si passa al pannello dei risultati della ricerca solo se c'è un campo disponibile all'orario richiesto
+				Pannello_U_2 panel_U_2 = new Pannello_U_2(sport, s1, d, spogliatoio);
 				container.add(panel_U_2, "U_2");
 				cl.show(container,"U_2");
 			}
