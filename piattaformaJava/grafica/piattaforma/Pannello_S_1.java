@@ -96,8 +96,7 @@ public class Pannello_S_1 extends PannelloGenerale{
 			field.setText("Password");
 			
 			RegistroStrutture registro = RegistroStrutture.getInstance();
-			System.out.println(RegistroStrutture.getInstance().getListaStrutture());
-
+		
 			//controllo esistenza struttura in registro con id = password
 			try {
 				PannelloGeneraleStruttura.privata = registro.check(valorepassword);

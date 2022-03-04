@@ -2,6 +2,7 @@ package piattaforma;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.time.LocalDateTime;
 
 import javax.swing.BorderFactory;
@@ -23,7 +24,9 @@ public class Pannello_U_2 extends PannelloGenerale{
 	Struttura struttura;
 	LocalDateTime orario;
 	boolean spogliatoio;
-	
+	Cliente c;
+	Campo campo;
+	Spogliatoio sp = null;
 	
 	JButton submit;
 	
@@ -36,12 +39,11 @@ public class Pannello_U_2 extends PannelloGenerale{
 	 * - CASO 3: richiesta di campo e spogliatoio, ma con spogliatio NON prenotabile all'orario stabilito per quella struttura
 	 * 	Display di una richiesta per prenotare comunque il campo senza lo spogliatoio
 	 */
-	public Pannello_U_2(String sport, Struttura strut, LocalDateTime orario, boolean spogliatoio) {
+	public Pannello_U_2(Cliente c, String sport, Struttura strut, LocalDateTime orario, Campo campo, boolean spogliatoio) {
 		super(); //si richiama super per dare al pannello le caratteristiche di JPanel e i settaggi generali
 		
 		//settiamo il Layout che utilizzeremo per questo pannello
-		this.setLayout(null);
-					
+		this.setLayout(null);			
 		
 		/*
 		 * Da questo punto inzia la customizzazione vera e propria del pannello
@@ -49,123 +51,167 @@ public class Pannello_U_2 extends PannelloGenerale{
 		this.sport=sport;
 		this.struttura = strut;
 		this.orario=orario;
+		this.c=c;
+		this.campo=campo;
 		this.spogliatoio=spogliatoio;
 		
+		JLabel titolo1 = new JLabel();
+		titolo1.setText("La tua ricerca ha avuto esito POSITIVO");
+		titolo1.setForeground(new Color(0x8E8D8A));
+		titolo1.setHorizontalTextPosition(JLabel.RIGHT);
+		titolo1.setFont(new Font("Baskerville", Font.PLAIN, 30));
+		titolo1.setBounds(50,100,900,35);
+		
+		JLabel titolo2 = new JLabel();
+		titolo2.setText("Recap prenotazione");
+		titolo2.setForeground(new Color(0xE85A4F));
+		titolo2.setHorizontalTextPosition(JLabel.RIGHT);
+		titolo2.setFont(new Font("Baskerville", Font.PLAIN, 30));
+		titolo2.setBounds(50,220,400,35);
+		
+		JLabel descrizione1 = new JLabel();
+		descrizione1.setText("Sport: " + sport);
+		descrizione1.setForeground(new Color(0x8E8D8A));
+		descrizione1.setHorizontalTextPosition(JLabel.RIGHT);
+		descrizione1.setFont(new Font("Baskerville", Font.PLAIN, 17));
+		descrizione1.setBounds(50,260,400,25);
+		
+		JLabel descrizione2 = new JLabel();
+		descrizione2.setText("Struttura: " + strut.getNome());
+		descrizione2.setForeground(new Color(0x8E8D8A));
+		descrizione2.setHorizontalTextPosition(JLabel.RIGHT);
+		descrizione2.setFont(new Font("Baskerville", Font.PLAIN, 17));
+		descrizione2.setBounds(50,290,400,25);
+		
+		JLabel descrizione3 = new JLabel();
+		descrizione3.setText("Data: " + (orario.toString()).split("T")[0]);
+		descrizione3.setForeground(new Color(0x8E8D8A));
+		descrizione3.setHorizontalTextPosition(JLabel.RIGHT);
+		descrizione3.setFont(new Font("Baskerville", Font.PLAIN, 17));
+		descrizione3.setBounds(50,320,400,25);
+		
+		JLabel descrizione4 = new JLabel();
+		descrizione4.setText("Ora: " + (orario.toString()).split("T")[1]);
+		descrizione4.setForeground(new Color(0x8E8D8A));
+		descrizione4.setHorizontalTextPosition(JLabel.RIGHT);
+		descrizione4.setFont(new Font("Baskerville", Font.PLAIN, 17));
+		descrizione4.setBounds(50,350,400,25);
+		
+		JLabel descrizione5 = new JLabel();
+		descrizione5.setForeground(new Color(0x8E8D8A));
+		descrizione5.setHorizontalTextPosition(JLabel.RIGHT);
+		descrizione5.setFont(new Font("Baskerville", Font.PLAIN, 17));
+		descrizione5.setBounds(50,380,400,25);
+		
+		JLabel descrizione6 = new JLabel();
+		descrizione6.setText("Campo: " + campo.getIDcampo());
+		descrizione6.setForeground(new Color(0x8E8D8A));
+		descrizione6.setHorizontalTextPosition(JLabel.RIGHT);
+		descrizione6.setFont(new Font("Baskerville", Font.PLAIN, 17));
+		descrizione6.setBounds(50,410,400,25);
+		
+		submit = new JButton("Conferma");
+		submit.setFont(new Font("Baskerville", Font.BOLD, 10));
+		submit.setBounds(490,550,100,30);
+		submit.setBackground(new Color(0xD8C3A5));
+		submit.setBorder(BorderFactory.createLineBorder(new Color(0xE98074),1));
+		submit.addActionListener(this);
 		
 		if(!spogliatoio) {
 			//CASO 1
-			
-			JLabel titolo1 = new JLabel();
-			titolo1.setText("La tua ricerca ha avuto esito POSITIVO");
-			titolo1.setForeground(new Color(0x8E8D8A));
-			titolo1.setHorizontalTextPosition(JLabel.RIGHT);
-			titolo1.setFont(new Font("Baskerville", Font.PLAIN, 20));
-			titolo1.setBounds(50,130,800,25);
-			
-			
-			
-			
-			submit = new JButton("Submit");
-			submit.setFont(new Font("Baskerville", Font.BOLD, 10));
-			submit.setBounds(490,550,100,30);
-			submit.setBackground(new Color(0xD8C3A5));
-			submit.setBorder(BorderFactory.createLineBorder(new Color(0xE98074),1));
-			submit.addActionListener(this);
-			
+			descrizione5.setText("Spogliatoio: NO");
 			this.add(titolo1);
+			this.add(titolo2);
+			this.add(descrizione1);
+			this.add(descrizione2);
+			this.add(descrizione3);
+			this.add(descrizione4);
+			this.add(descrizione5);
+			this.add(descrizione6);
 			this.add(submit);
 			
 		}
 		else {
-			//CASO 2
-			//CASO 3
-		}
-		
-		
-		/*
-		int estrazione = (int) (Math.random() * 60); 
-		System.out.println(estrazione);
-		
-		
-		//--CASO1
-		if(estrazione >= 0 && estrazione < 10) {
-			JLabel titolo1 = new JLabel();
-			titolo1.setText("La tua ricerca ha avuto esito POSITIVO");
-			titolo1.setForeground(new Color(0x8E8D8A));
-			titolo1.setHorizontalTextPosition(JLabel.RIGHT);
-			titolo1.setFont(new Font("Baskerville", Font.PLAIN, 20));
-			titolo1.setBounds(50,130,800,25);
+			try {
+				//CASO 2
+				sp=c.controlloDisponibilitaSpogliatoio(orario, strut);
+				descrizione5.setText("Spogliatoio: " + sp.getIDspogliatoio());
+				this.add(titolo1);
+				this.add(titolo2);
+				this.add(descrizione1);
+				this.add(descrizione2);
+				this.add(descrizione3);
+				this.add(descrizione4);
+				this.add(descrizione5);
+				this.add(descrizione6);
+				this.add(submit);
+				
+			} catch (Exception e) {//CASO 3
+				// TODO: handle exception
+				titolo1.setText("La tua ricerca ha avuto esito POSITIVO per il campo");
+				
+				JLabel titolo3 = new JLabel();
+				titolo3.setText("NEGATIVO per lo spogliatoio");
+				titolo3.setForeground(new Color(0x8E8D8A));
+				titolo3.setHorizontalTextPosition(JLabel.RIGHT);
+				titolo3.setFont(new Font("Baskerville", Font.PLAIN, 30));
+				titolo3.setBounds(150,150,900,35);
 			
-			this.add(titolo1);
-		}
-		//--CASO1
-		else if(estrazione >= 10 && estrazione < 20) {
-			JLabel titolo1 = new JLabel();
-			titolo1.setText("La tua ricerca ha avuto esito POSITIVO");
-			titolo1.setForeground(new Color(0x8E8D8A));
-			titolo1.setHorizontalTextPosition(JLabel.RIGHT);
-			titolo1.setFont(new Font("Baskerville", Font.PLAIN, 20));
-			titolo1.setBounds(50,130,800,25);
+				JLabel descrizione7 = new JLabel();
+				descrizione7.setText("Vuoi confermare la prenotazione anche SENZA spogliatoio? (premi su 'UTENTE' per annullare)");
+				descrizione7.setForeground(new Color(0x8E8D8A));
+				descrizione7.setHorizontalTextPosition(JLabel.RIGHT);
+				descrizione7.setFont(new Font("Baskerville", Font.PLAIN, 17));
+				descrizione7.setBounds(50,500,900,25);
+				
+				descrizione5.setText("Spogliatoio: NO");
+				
+				this.add(titolo1);
+				this.add(titolo2);
+				this.add(titolo3);
+				this.add(descrizione1);
+				this.add(descrizione2);
+				this.add(descrizione3);
+				this.add(descrizione4);
+				this.add(descrizione5);
+				this.add(descrizione6);
+				this.add(descrizione7);
+				this.add(submit);
+				
+			}
 			
-			this.add(titolo1);
 		}
-		//--CASO2
-		else if(estrazione >= 20 && estrazione < 30) {
-			JLabel titolo1 = new JLabel();
-			titolo1.setText("La tua ricerca ha avuto esito POSITIVO");
-			titolo1.setForeground(new Color(0x8E8D8A));
-			titolo1.setHorizontalTextPosition(JLabel.RIGHT);
-			titolo1.setFont(new Font("Baskerville", Font.PLAIN, 20));
-			titolo1.setBounds(50,130,800,25);
-			
-			this.add(titolo1);
-		}
-		//--CASO3
-		else if(estrazione >= 30 && estrazione < 40) {
-			JLabel titolo1 = new JLabel();
-			titolo1.setText("La tua ricerca ha avuto esito POSITIVO");
-			titolo1.setForeground(new Color(0x8E8D8A));
-			titolo1.setHorizontalTextPosition(JLabel.RIGHT);
-			titolo1.setFont(new Font("Baskerville", Font.PLAIN, 20));
-			titolo1.setBounds(50,130,800,25);
-			
-			this.add(titolo1);
-		}
-		//--CASO4
-		else if(estrazione >= 40 && estrazione < 50) {
-			JLabel titolo1 = new JLabel();
-			titolo1.setText("La tua ricerca ha avuto esito POSITIVO");
-			titolo1.setForeground(new Color(0x8E8D8A));
-			titolo1.setHorizontalTextPosition(JLabel.RIGHT);
-			titolo1.setFont(new Font("Baskerville", Font.PLAIN, 20));
-			titolo1.setBounds(50,130,800,25);
-			
-			this.add(titolo1);
-		}
-		//--CASO5
-		else if(estrazione >= 40 && estrazione < 59) {
-			JLabel titolo1 = new JLabel();
-			titolo1.setText("La tua ricerca ha avuto esito POSITIVO");
-			titolo1.setForeground(new Color(0x8E8D8A));
-			titolo1.setHorizontalTextPosition(JLabel.RIGHT);
-			titolo1.setFont(new Font("Baskerville", Font.PLAIN, 20));
-			titolo1.setBounds(50,130,800,25);
-			
-			this.add(titolo1);
-		}
-		//--CASO6
-		else {
-			JLabel titolo1 = new JLabel();
-			titolo1.setText("La tua ricerca ha avuto esito POSITIVO");
-			titolo1.setForeground(new Color(0x8E8D8A));
-			titolo1.setHorizontalTextPosition(JLabel.RIGHT);
-			titolo1.setFont(new Font("Baskerville", Font.PLAIN, 20));
-			titolo1.setBounds(50,130,800,25);
-			
-			this.add(titolo1);
-		}
-		*/
-		
 		
 	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		super.actionPerformed(e);
+		
+		if(e.getSource() == submit) {
+				try {
+					if(!spogliatoio) { //CASO 1
+						RegistroStrutture.getInstance().confermaPrenotazioneNOSpogliatoio(orario, sport, c.getCodiceFiscale(), struttura, campo);	
+					}
+					else {
+						if(sp != null) { //CASO 2
+							RegistroStrutture.getInstance().confermaPrenotazioneCONSpogliatoio(orario, sport, c.getCodiceFiscale(), struttura, campo, sp);	
+						}
+						else { //CASO 3
+							RegistroStrutture.getInstance().confermaPrenotazioneNOSpogliatoio(orario, sport, c.getCodiceFiscale(), struttura, campo);	
+						}		
+					}
+				} catch (Exception e2) {
+					// TODO: handle exception
+					JOptionPane.showMessageDialog(null, "Non puoi prenotare in questa struttura", "Errore Ban", JOptionPane.ERROR_MESSAGE);	
+					cl.show(container, "U_1");
+					return;
+				}
+				
+				cl.show(container, "1");
+			
+		}
+		
+	}
+		
 }
