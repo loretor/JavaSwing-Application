@@ -65,11 +65,12 @@ public class Pannello_1 extends PannelloGenerale{
 		immagine.setIcon(campo);
 		immagine.setBounds(90,350,400,300);
 		
+		
 		ImageIcon campo1 = new ImageIcon(new ImageIcon("grafica/campo2.jpg").getImage().getScaledInstance(400,300,Image.SCALE_DEFAULT));
 		JLabel immagine1 = new JLabel();
 		immagine1.setIcon(campo1);
 		immagine1.setBounds(570,350,400,300);
-		
+
 		
 		this.add(label_benvenuto);
 		this.add(descrizione);

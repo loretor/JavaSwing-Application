@@ -2,10 +2,12 @@ package piattaforma;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.time.LocalDateTime;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -116,6 +118,31 @@ public class Pannello_U_2 extends PannelloGenerale{
 		submit.setBackground(new Color(0xD8C3A5));
 		submit.setBorder(BorderFactory.createLineBorder(new Color(0xE98074),1));
 		submit.addActionListener(this);
+		
+		//stampo 3 immagini diverse a seconda dello sport
+		switch(sport) {
+		case "Calcetto":
+			ImageIcon campoimage = new ImageIcon(new ImageIcon("grafica/calcetto.jpg").getImage().getScaledInstance(400,220,Image.SCALE_DEFAULT));
+			JLabel image = new JLabel();
+			image.setIcon(campoimage);
+			image.setBounds(600,250,400,220);
+			this.add(image);
+			break;
+		case "Basket":
+			ImageIcon campoimage1 = new ImageIcon(new ImageIcon("grafica/basket.jpg").getImage().getScaledInstance(400,330,Image.SCALE_DEFAULT));
+			JLabel image1 = new JLabel();
+			image1.setIcon(campoimage1);
+			image1.setBounds(600,250,400,250);
+			this.add(image1);
+			break;
+		case "Tennis":
+			ImageIcon campoimage2 = new ImageIcon(new ImageIcon("grafica/tennis.jpeg").getImage().getScaledInstance(400,350,Image.SCALE_DEFAULT));
+			JLabel image2 = new JLabel();
+			image2.setIcon(campoimage2);
+			image2.setBounds(600,250,400,250);
+			this.add(image2);
+			break;
+		}
 		
 		if(!spogliatoio) {
 			//CASO 1
