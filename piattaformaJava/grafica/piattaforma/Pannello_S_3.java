@@ -70,7 +70,7 @@ public class Pannello_S_3 extends PannelloGeneraleStruttura{
 		descrizione1.setBounds(240,180,900,25);
 		
 		JLabel descrizione2 = new JLabel();
-		descrizione2.setText("Premuto il pulsante di submit verrà comunque richiesta una ulteriore conferma delle modifiche");
+		descrizione2.setText("E' possibile aggiungere un solo campo o spogliatoio alla volta");
 		descrizione2.setForeground(new Color(0x8E8D8A));
 		descrizione2.setHorizontalTextPosition(JLabel.RIGHT);
 		descrizione2.setFont(new Font("Baskerville", Font.PLAIN, 17));

@@ -45,7 +45,7 @@ public class Pannello_S_2 extends PannelloGeneraleStruttura{
 		nome.setBounds(440,90,700,50);
 		
 		JLabel titolo1 = new JLabel();
-		titolo1.setText("Da questa area puoi effettuare le azioni di sinistra per la tua struttura");
+		titolo1.setText("Puoi effettuare le azioni del menu presente sulla sinistra per la tua struttura");
 		titolo1.setForeground(new Color(0x8E8D8A));
 		titolo1.setHorizontalTextPosition(JLabel.RIGHT);
 		titolo1.setFont(new Font("Baskerville", Font.PLAIN, 20));

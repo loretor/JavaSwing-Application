@@ -174,7 +174,7 @@ public class RegistroStrutture {
      * @throws Exception 
      * 
      */
-    protected void confermaPrenotazioneNOSpogliatoio(LocalDateTime dataora, String sport, String cf, Struttura struttura, Campo campo) throws Exception {    	
+    protected float confermaPrenotazioneNOSpogliatoio(LocalDateTime dataora, String sport, String cf, Struttura struttura, Campo campo) throws Exception {    	
     	if(struttura.controllaBan(cf)) {
     		//eccezione
     		throw new Exception("non puoi prenotare perchè sei bannato");
@@ -184,6 +184,8 @@ public class RegistroStrutture {
     		
     		campo.linkListaPrenotazioni(p);
     		struttura.aggiornaConteggioPrenotazioni(cf);
+    		
+    		return p.getPrezzo();
     	}
     	  	
     }
@@ -201,7 +203,7 @@ public class RegistroStrutture {
      * @throws Exception 
      * 
      */
-    protected void confermaPrenotazioneCONSpogliatoio(LocalDateTime dataora, String sport, String cf, Struttura struttura, Campo campo, Spogliatoio spogliatoio) throws Exception {    	  	
+    protected float confermaPrenotazioneCONSpogliatoio(LocalDateTime dataora, String sport, String cf, Struttura struttura, Campo campo, Spogliatoio spogliatoio) throws Exception {    	  	
     	if(struttura.controllaBan(cf)) {
     		// eccezione
     		throw new Exception("non puoi prenotare perchè sei bannato");
@@ -212,6 +214,8 @@ public class RegistroStrutture {
     		campo.linkListaPrenotazioni(p);
     		spogliatoio.linkListaPrenotazioni(p);
     		struttura.aggiornaConteggioPrenotazioni(cf);
+    		
+    		return p.getPrezzo();
     	}
     	  	
     }

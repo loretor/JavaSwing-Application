@@ -217,17 +217,21 @@ public class Pannello_U_2 extends PannelloGenerale{
 		
 		if(e.getSource() == submit) {
 				try {
+					float prezzo;
+					
 					if(!spogliatoio) { //CASO 1
-						RegistroStrutture.getInstance().confermaPrenotazioneNOSpogliatoio(orario, sport, c.getCodiceFiscale(), struttura, campo);	
+						prezzo = RegistroStrutture.getInstance().confermaPrenotazioneNOSpogliatoio(orario, sport, c.getCodiceFiscale(), struttura, campo);	
 					}
 					else {
 						if(sp != null) { //CASO 2
-							RegistroStrutture.getInstance().confermaPrenotazioneCONSpogliatoio(orario, sport, c.getCodiceFiscale(), struttura, campo, sp);	
+							prezzo = RegistroStrutture.getInstance().confermaPrenotazioneCONSpogliatoio(orario, sport, c.getCodiceFiscale(), struttura, campo, sp);	
 						}
 						else { //CASO 3
-							RegistroStrutture.getInstance().confermaPrenotazioneNOSpogliatoio(orario, sport, c.getCodiceFiscale(), struttura, campo);	
+							prezzo = RegistroStrutture.getInstance().confermaPrenotazioneNOSpogliatoio(orario, sport, c.getCodiceFiscale(), struttura, campo);	
 						}		
 					}
+					
+					JOptionPane.showMessageDialog(null, "La tua prenotazione è confermata e ha un prezzo totale di "+prezzo+"€","Informazioni finali",JOptionPane.INFORMATION_MESSAGE);
 				} catch (Exception e2) {
 					// TODO: handle exception
 					JOptionPane.showMessageDialog(null, "Non puoi prenotare in questa struttura", "Errore Ban", JOptionPane.ERROR_MESSAGE);	

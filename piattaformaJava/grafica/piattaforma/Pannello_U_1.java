@@ -62,14 +62,14 @@ public class Pannello_U_1 extends PannelloGenerale{
 		titolo.setBounds(20,70,700,40);
 		
 		JLabel titolo1 = new JLabel();
-		titolo1.setText("Scegli lo sport che desideri praticare, la struttura che preferisci e l'orario che ti è più comodo.");
+		titolo1.setText("Scegli lo sport che desideri praticare, la struttura che preferisci e l'orario che ti è più comodo");
 		titolo1.setForeground(new Color(0x8E8D8A));
 		titolo1.setHorizontalTextPosition(JLabel.RIGHT);
 		titolo1.setFont(new Font("Baskerville", Font.PLAIN, 20));
 		titolo1.setBounds(20,130,900,25);
 		
 		JLabel titolo2 = new JLabel();
-		titolo2.setText("Specifica inoltre se sei interessato a prenotare anche uno spogliatoio nell'ora successiva all'attività sportiva.");
+		titolo2.setText("Specifica inoltre se sei interessato a prenotare anche uno spogliatoio presso la medesima struttura");
 		titolo2.setForeground(new Color(0x8E8D8A));
 		titolo2.setHorizontalTextPosition(JLabel.RIGHT);
 		titolo2.setFont(new Font("Baskerville", Font.PLAIN, 20));
@@ -83,14 +83,14 @@ public class Pannello_U_1 extends PannelloGenerale{
 		titolo3.setBounds(20,190,1000,25);
 		
 		JLabel titolo4 = new JLabel();
-		titolo4.setText("Se non si modifica nulla la piattaforma effettuerà la ricerca con le preferenze già indicate.");
+		titolo4.setText("E 'possibile che non si riesca a prenotare presso una certa struttura se si è stati bannati");
 		titolo4.setForeground(new Color(0x8E8D8A));
 		titolo4.setHorizontalTextPosition(JLabel.RIGHT);
 		titolo4.setFont(new Font("Baskerville", Font.PLAIN, 17));
 		titolo4.setBounds(20,210,1000,25);
 		
 		JLabel titolo5 = new JLabel();
-		titolo5.setText("La richiesta di spogliatoio può anche non avere una risposta, in tal caso il sistema lo stetta di default a No");
+		titolo5.setText("La richiesta di spogliatoio può anche essere trascurata, in tal caso il sistema comprende che non si è interessati a prenotarlo");
 		titolo5.setForeground(new Color(0x8E8D8A));
 		titolo5.setHorizontalTextPosition(JLabel.RIGHT);
 		titolo5.setFont(new Font("Baskerville", Font.PLAIN, 17));
@@ -101,33 +101,33 @@ public class Pannello_U_1 extends PannelloGenerale{
 		descrizione8.setForeground(new Color(0x8E8D8A));
 		descrizione8.setHorizontalTextPosition(JLabel.RIGHT);
 		descrizione8.setFont(new Font("Baskerville", Font.BOLD, 17));
-		descrizione8.setBounds(65,300,200,25);
+		descrizione8.setBounds(65,270,200,25);
 		
 		JLabel descrizione6 = new JLabel();
 		descrizione6.setText("Cognome:");
 		descrizione6.setForeground(new Color(0x8E8D8A));
 		descrizione6.setHorizontalTextPosition(JLabel.RIGHT);
 		descrizione6.setFont(new Font("Baskerville", Font.BOLD, 17));
-		descrizione6.setBounds(65,330,200,25);
+		descrizione6.setBounds(65,300,200,25);
 		
 		JLabel descrizione7 = new JLabel();
 		descrizione7.setText("Codice Fiscale:");
 		descrizione7.setForeground(new Color(0x8E8D8A));
 		descrizione7.setHorizontalTextPosition(JLabel.RIGHT);
 		descrizione7.setFont(new Font("Baskerville", Font.BOLD, 17));
-		descrizione7.setBounds(65,360,200,25);
+		descrizione7.setBounds(65,330,200,25);
 		
 		field_nome = new JTextField("");
 		field_nome.setFont(new Font("Baskerville", Font.PLAIN, 17));
-		field_nome.setBounds(215,300,300,30);
+		field_nome.setBounds(215,270,300,30);
 		
 		field_cognome = new JTextField("");
 		field_cognome.setFont(new Font("Baskerville", Font.PLAIN, 17));
-		field_cognome.setBounds(215,330,300,30);
+		field_cognome.setBounds(215,300,300,30);
 		
 		field_cf = new JTextField("");
 		field_cf.setFont(new Font("Baskerville", Font.PLAIN, 17));
-		field_cf.setBounds(215,360,300,30);
+		field_cf.setBounds(215,330,300,30);
 		
 		
 		JLabel descrizione1 = new JLabel();

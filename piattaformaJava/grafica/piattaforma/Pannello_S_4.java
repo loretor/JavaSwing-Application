@@ -36,7 +36,7 @@ public class Pannello_S_4 extends PannelloGeneraleStruttura{
 		titolo.setBounds(240,90,700,50);
 		
 		JLabel titolo1 = new JLabel();
-		titolo1.setText("In questa area puoi mettere un ban a un specifico utente per impedigli di poter prenotare");
+		titolo1.setText("In questa area puoi assegnare un ban a un utente per impedigli future prenotazioni");
 		titolo1.setForeground(new Color(0x8E8D8A));
 		titolo1.setHorizontalTextPosition(JLabel.RIGHT);
 		titolo1.setFont(new Font("Baskerville", Font.PLAIN, 20));
@@ -50,7 +50,7 @@ public class Pannello_S_4 extends PannelloGeneraleStruttura{
 		titolo2.setBounds(240,180,800,25);
 		
 		JLabel descrizione1 = new JLabel();
-		descrizione1.setText("Il Ban è un'azione forte, si prega quindi di usarlo con cautela e solo in situazioni giustificate");
+		descrizione1.setText("Si prega di usare il ban con cautela e solo in situazioni giustificate, in quanto azione non reversibile													");
 		descrizione1.setForeground(new Color(0x8E8D8A));
 		descrizione1.setHorizontalTextPosition(JLabel.RIGHT);
 		descrizione1.setFont(new Font("Baskerville", Font.PLAIN, 17));

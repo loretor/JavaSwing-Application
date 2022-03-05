@@ -40,21 +40,21 @@ public class Pannello_1 extends PannelloGenerale{
 		descrizione.setBounds(140,170,800,25);
 		
 		JLabel descrizione1 = new JLabel();
-		descrizione1.setText("Se desideri fare una prenotazione clicca in alto su Utente e procedi a indicare le tue preferenze");
+		descrizione1.setText("Se desideri fare una prenotazione clicca in alto su 'UTENTE' e procedi a indicare le tue preferenze");
 		descrizione1.setForeground(new Color(0x8E8D8A));
 		descrizione1.setHorizontalAlignment(JLabel.CENTER);
 		descrizione1.setFont(new Font("Baskerville", Font.PLAIN, 17));
 		descrizione1.setBounds(90,210,900,25);
 		
 		JLabel descrizione2 = new JLabel();
-		descrizione2.setText("Se sei un proprietario di una stuttura clicca invece su Struttura");
+		descrizione2.setText("Se sei un proprietario di una stuttura clicca invece su 'STRUTTURA' per accedere alla tua area personale");
 		descrizione2.setForeground(new Color(0x8E8D8A));
 		descrizione2.setHorizontalAlignment(JLabel.CENTER);
 		descrizione2.setFont(new Font("Baskerville", Font.PLAIN, 17));
 		descrizione2.setBounds(90,240,900,25);
 		
 		JLabel descrizione3 = new JLabel();
-		descrizione3.setText("Qualora volessi tornare in questo menu in ogni momento clicca su Menu");
+		descrizione3.setText("Qualora volessi tornare in questo menu in ogni momento clicca su 'MENU'");
 		descrizione3.setForeground(new Color(0x8E8D8A));
 		descrizione3.setHorizontalAlignment(JLabel.CENTER);
 		descrizione3.setFont(new Font("Baskerville", Font.PLAIN, 17));
